@@ -7,12 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E404B77F26CEF462001BB7B3 /* ChapterOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E404B77E26CEF462001BB7B3 /* ChapterOneView.swift */; };
+		E40B2F4A26CE836F00E0B758 /* LuckiestGuy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E40B2F4926CE836F00E0B758 /* LuckiestGuy.ttf */; };
+		E416FBF626C3F7D700AE78D5 /* GamePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416FBF526C3F7D700AE78D5 /* GamePlay.swift */; };
+		E4227BB826CB304B0047DFBF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4227BB726CB304B0047DFBF /* Player.swift */; };
+		E4293C3326C68889003442C6 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4293C3226C68889003442C6 /* BorderView.swift */; };
+		E4293C3D26C68F52003442C6 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4293C3C26C68F52003442C6 /* Extentions.swift */; };
+		E46C6B762731557900A99115 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46C6B752731557900A99115 /* ContentView.swift */; };
+		E46C6B7E2731558F00A99115 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46C6B7D2731558F00A99115 /* GameView.swift */; };
 		E47DED8826C149C100B18057 /* PizzaBirdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47DED8726C149C100B18057 /* PizzaBirdApp.swift */; };
-		E47DED8A26C149C100B18057 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47DED8926C149C100B18057 /* ContentView.swift */; };
 		E47DED8C26C149C500B18057 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E47DED8B26C149C500B18057 /* Assets.xcassets */; };
 		E47DED8F26C149C500B18057 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E47DED8E26C149C500B18057 /* Preview Assets.xcassets */; };
 		E47DED9A26C149C600B18057 /* PizzaBirdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47DED9926C149C600B18057 /* PizzaBirdTests.swift */; };
 		E47DEDA526C149C600B18057 /* PizzaBirdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47DEDA426C149C600B18057 /* PizzaBirdUITests.swift */; };
+		E47DEDB626C14B6600B18057 /* SkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47DEDB526C14B6600B18057 /* SkyView.swift */; };
+		E47DEDBB26C14D5600B18057 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47DEDBA26C14D5600B18057 /* WelcomeView.swift */; };
+		E47DEDC826C161A100B18057 /* LevelBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47DEDC726C161A100B18057 /* LevelBtnView.swift */; };
+		E47DEDDF26C1829A00B18057 /* TopBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47DEDDE26C1829A00B18057 /* TopBorder.swift */; };
+		E484350D26C28F8100B8287B /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E484350C26C28F8100B8287B /* BackgroundView.swift */; };
+		E4C2F7B827314E6B00821DC4 /* LevelCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2F7B727314E6B00821DC4 /* LevelCompleted.swift */; };
+		E4C2F7C027314E8F00821DC4 /* GameOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2F7BF27314E8F00821DC4 /* GameOptionsView.swift */; };
+		E4D5F86026CE863A00058412 /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5F85F26CE863A00058412 /* Levels.swift */; };
+		E4D5F86D26CE8CEA00058412 /* PreviewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5F86C26CE8CEA00058412 /* PreviewScene.swift */; };
+		E4DE65B926C359A7008DFE25 /* PlayerExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4DE65B826C359A7008DFE25 /* PlayerExplosion.sks */; };
+		E4E5423226C52D0700B2FFA5 /* GameSceneChapterOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E5423126C52D0700B2FFA5 /* GameSceneChapterOne.swift */; };
+		E4E5424026C53D8900B2FFA5 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E5423F26C53D8900B2FFA5 /* GameOverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,9 +52,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E404B77E26CEF462001BB7B3 /* ChapterOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterOneView.swift; sourceTree = "<group>"; };
+		E40B2F4926CE836F00E0B758 /* LuckiestGuy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LuckiestGuy.ttf; sourceTree = "<group>"; };
+		E416FBF526C3F7D700AE78D5 /* GamePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlay.swift; sourceTree = "<group>"; };
+		E4227BB726CB304B0047DFBF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		E4293C3226C68889003442C6 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
+		E4293C3C26C68F52003442C6 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		E46C6B752731557900A99115 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E46C6B7D2731558F00A99115 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		E47DED8426C149C100B18057 /* PizzaBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E47DED8726C149C100B18057 /* PizzaBirdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaBirdApp.swift; sourceTree = "<group>"; };
-		E47DED8926C149C100B18057 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E47DED8B26C149C500B18057 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E47DED8E26C149C500B18057 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E47DED9026C149C500B18057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +71,18 @@
 		E47DEDA026C149C600B18057 /* PizzaBirdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PizzaBirdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E47DEDA426C149C600B18057 /* PizzaBirdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaBirdUITests.swift; sourceTree = "<group>"; };
 		E47DEDA626C149C600B18057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E47DEDB526C14B6600B18057 /* SkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyView.swift; sourceTree = "<group>"; };
+		E47DEDBA26C14D5600B18057 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		E47DEDC726C161A100B18057 /* LevelBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBtnView.swift; sourceTree = "<group>"; };
+		E47DEDDE26C1829A00B18057 /* TopBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBorder.swift; sourceTree = "<group>"; };
+		E484350C26C28F8100B8287B /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		E4C2F7B727314E6B00821DC4 /* LevelCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCompleted.swift; sourceTree = "<group>"; };
+		E4C2F7BF27314E8F00821DC4 /* GameOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOptionsView.swift; sourceTree = "<group>"; };
+		E4D5F85F26CE863A00058412 /* Levels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
+		E4D5F86C26CE8CEA00058412 /* PreviewScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScene.swift; sourceTree = "<group>"; };
+		E4DE65B826C359A7008DFE25 /* PlayerExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerExplosion.sks; sourceTree = "<group>"; };
+		E4E5423126C52D0700B2FFA5 /* GameSceneChapterOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneChapterOne.swift; sourceTree = "<group>"; };
+		E4E5423F26C53D8900B2FFA5 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +110,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E40B2F4026CE80B300E0B758 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E40B2F4926CE836F00E0B758 /* LuckiestGuy.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E416FBEE26C3F64400AE78D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E47DEDDE26C1829A00B18057 /* TopBorder.swift */,
+				E47DEDBA26C14D5600B18057 /* WelcomeView.swift */,
+				E404B77E26CEF462001BB7B3 /* ChapterOneView.swift */,
+				E46C6B752731557900A99115 /* ContentView.swift */,
+				E46C6B7D2731558F00A99115 /* GameView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E416FBF226C3F67B00AE78D5 /* ReusableDesignViews */ = {
+			isa = PBXGroup;
+			children = (
+				E47DEDC726C161A100B18057 /* LevelBtnView.swift */,
+				E484350C26C28F8100B8287B /* BackgroundView.swift */,
+				E4E5423F26C53D8900B2FFA5 /* GameOverView.swift */,
+				E4293C3226C68889003442C6 /* BorderView.swift */,
+				E4C2F7B727314E6B00821DC4 /* LevelCompleted.swift */,
+				E4C2F7BF27314E8F00821DC4 /* GameOptionsView.swift */,
+			);
+			path = ReusableDesignViews;
+			sourceTree = "<group>";
+		};
+		E416FBF326C3F72500AE78D5 /* GameScenes */ = {
+			isa = PBXGroup;
+			children = (
+				E417A83726C671B900DC99ED /* Chapters */,
+				E4DE65B826C359A7008DFE25 /* PlayerExplosion.sks */,
+				E4D5F86C26CE8CEA00058412 /* PreviewScene.swift */,
+			);
+			path = GameScenes;
+			sourceTree = "<group>";
+		};
+		E416FBF426C3F74C00AE78D5 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				E416FBF526C3F7D700AE78D5 /* GamePlay.swift */,
+				E4293C3C26C68F52003442C6 /* Extentions.swift */,
+				E4227BB726CB304B0047DFBF /* Player.swift */,
+				E4D5F85F26CE863A00058412 /* Levels.swift */,
+			);
+			path = Modals;
+			sourceTree = "<group>";
+		};
+		E417A83726C671B900DC99ED /* Chapters */ = {
+			isa = PBXGroup;
+			children = (
+				E4293C8426CA9545003442C6 /* ChapterOne */,
+			);
+			path = Chapters;
+			sourceTree = "<group>";
+		};
+		E4293C8426CA9545003442C6 /* ChapterOne */ = {
+			isa = PBXGroup;
+			children = (
+				E47DEDB526C14B6600B18057 /* SkyView.swift */,
+				E4E5423126C52D0700B2FFA5 /* GameSceneChapterOne.swift */,
+			);
+			path = ChapterOne;
+			sourceTree = "<group>";
+		};
 		E47DED7B26C149C100B18057 = {
 			isa = PBXGroup;
 			children = (
@@ -95,8 +204,12 @@
 		E47DED8626C149C100B18057 /* PizzaBird */ = {
 			isa = PBXGroup;
 			children = (
+				E40B2F4026CE80B300E0B758 /* Fonts */,
+				E416FBF426C3F74C00AE78D5 /* Modals */,
+				E416FBF326C3F72500AE78D5 /* GameScenes */,
+				E416FBF226C3F67B00AE78D5 /* ReusableDesignViews */,
+				E416FBEE26C3F64400AE78D5 /* Views */,
 				E47DED8726C149C100B18057 /* PizzaBirdApp.swift */,
-				E47DED8926C149C100B18057 /* ContentView.swift */,
 				E47DED8B26C149C500B18057 /* Assets.xcassets */,
 				E47DED9026C149C500B18057 /* Info.plist */,
 				E47DED8D26C149C500B18057 /* Preview Content */,
@@ -233,8 +346,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4DE65B926C359A7008DFE25 /* PlayerExplosion.sks in Resources */,
 				E47DED8F26C149C500B18057 /* Preview Assets.xcassets in Resources */,
 				E47DED8C26C149C500B18057 /* Assets.xcassets in Resources */,
+				E40B2F4A26CE836F00E0B758 /* LuckiestGuy.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +374,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E47DED8A26C149C100B18057 /* ContentView.swift in Sources */,
+				E4C2F7C027314E8F00821DC4 /* GameOptionsView.swift in Sources */,
+				E4E5424026C53D8900B2FFA5 /* GameOverView.swift in Sources */,
+				E484350D26C28F8100B8287B /* BackgroundView.swift in Sources */,
+				E4D5F86D26CE8CEA00058412 /* PreviewScene.swift in Sources */,
+				E4293C3326C68889003442C6 /* BorderView.swift in Sources */,
+				E404B77F26CEF462001BB7B3 /* ChapterOneView.swift in Sources */,
+				E47DEDB626C14B6600B18057 /* SkyView.swift in Sources */,
+				E46C6B762731557900A99115 /* ContentView.swift in Sources */,
+				E4293C3D26C68F52003442C6 /* Extentions.swift in Sources */,
+				E4C2F7B827314E6B00821DC4 /* LevelCompleted.swift in Sources */,
+				E4E5423226C52D0700B2FFA5 /* GameSceneChapterOne.swift in Sources */,
+				E47DEDDF26C1829A00B18057 /* TopBorder.swift in Sources */,
+				E416FBF626C3F7D700AE78D5 /* GamePlay.swift in Sources */,
+				E46C6B7E2731558F00A99115 /* GameView.swift in Sources */,
 				E47DED8826C149C100B18057 /* PizzaBirdApp.swift in Sources */,
+				E4D5F86026CE863A00058412 /* Levels.swift in Sources */,
+				E4227BB826CB304B0047DFBF /* Player.swift in Sources */,
+				E47DEDC826C161A100B18057 /* LevelBtnView.swift in Sources */,
+				E47DEDBB26C14D5600B18057 /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
