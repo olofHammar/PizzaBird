@@ -4,8 +4,9 @@ import SpriteKit
 struct LevelBtnView: View {
     
     @EnvironmentObject var game: Game
-    @Binding var isGameViewShowing: Bool
-    var level: SKScene
+//    @Binding var isGameViewShowing: Bool
+    @Binding var isPreviewShowing: Bool
+
     var levelNr: Int
     var levelImage: Image!
     
@@ -18,10 +19,12 @@ struct LevelBtnView: View {
                 .onTapGesture {
                     if game.gamePlay.levels.levels[levelNr].levelUnlocked {
                         
-                        game.gamePlay.selectedLevel = level
                         game.gamePlay.levelNr = levelNr
                         //game.gamePlay.levelName = levelName
-                        isGameViewShowing.toggle()
+                        //isGameViewShowing.toggle()
+                        withAnimation {
+                            isPreviewShowing.toggle()
+                        }
                         print("\(game.gamePlay.totalWeight)")
                     }
             }
@@ -64,7 +67,7 @@ struct LevelBtnView: View {
     
     private func setText() -> String {
         if game.gamePlay.levels.levels[levelNr].levelUnlocked {
-            return "\(levelNr)"
+            return "\(levelNr+1)"
         } else {
             return ""
         }
@@ -73,7 +76,7 @@ struct LevelBtnView: View {
 
 struct LevelBtnView_Previews: PreviewProvider {
     static var previews: some View {
-        LevelBtnView(isGameViewShowing: .constant(false), level: PreviewScene(), levelNr: 1)
+        LevelBtnView(isPreviewShowing: .constant(false), levelNr: 1)
     }
 }
 

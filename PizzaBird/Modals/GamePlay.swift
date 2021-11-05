@@ -1,19 +1,38 @@
 import SwiftUI
 import SpriteKit
 
-struct GamePlay {
+struct GamePlay: Codable {
+
+    var hearts = 5
+    var levels = Levels.init()
+    var levelNr = 0
+    var currentLevelWeight = 0
+    var totalWeight = 0
+    var isSelectedLevelCompleted = false
+    var isRetrySelected = false
     
-    var hearts: Int
-    var selectedLevel: SKScene!
-    var levels: Levels
-    //var levelName: String
-    var levelNr: Int
-    var currentLevelWeight: Int
-    var totalWeight: Int
-    var isSelectedLevelCompleted: Bool
-    var isRetrySelected: Bool
 }
 
 class Game: ObservableObject {
-    @Published var gamePlay: GamePlay = GamePlay.init(hearts: 5, selectedLevel: nil, levels: Levels.init(), levelNr: 0, currentLevelWeight: 0, totalWeight: 0, isSelectedLevelCompleted: false, isRetrySelected: false)
+    
+    @Published var gamePlay: GamePlay
+    static let saveKey = "SavedData"
+
+    init() {
+            if let data = UserDefaults.standard.data(forKey: Self.saveKey) {
+                if let decoded = try? JSONDecoder().decode(GamePlay.self, from: data) {
+                    self.gamePlay = decoded
+                    return
+                }
+            }
+
+        self.gamePlay = GamePlay(hearts: 5, levels: Levels.init(), currentLevelWeight: 0, totalWeight: 0, isSelectedLevelCompleted: false, isRetrySelected: false)
+        }
+    
+    func save() {
+        if let encoded = try? JSONEncoder().encode(gamePlay) {
+            UserDefaults.standard.set(encoded, forKey: Self.saveKey)
+        }
+    }
 }
+

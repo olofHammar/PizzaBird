@@ -2,20 +2,18 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
-class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene, SKPhysicsContactDelegate, ObservableObject {
     
-    @Binding var currentWeight: Int
-    @Binding var isLevelCompleted: Bool
-    @Binding var isRetrySelected: Bool
-    @Binding var isGameViewShowing: Bool
+    @Published var score = 0
+    @Published var isLevelCompleted = false
+    @Published var isRetrySelected = false
+    @Published var isGameViewShowing = true
+    @Published var level = 0
+
+    /*
     @Binding var level: Int
     
-    init(score: Binding<Int>, isLevelCompleted: Binding<Bool>, isRetrySelected: Binding<Bool>,
-         isGameViewshowing: Binding<Bool>, level: Binding<Int>) {
-        _currentWeight = score
-        _isLevelCompleted = isLevelCompleted
-        _isRetrySelected = isRetrySelected
-        _isGameViewShowing = isGameViewshowing
+    init(level: Binding<Int>) {
         _level = level
         super.init(size: CGSize(width: 300, height: 400))
         self.scaleMode = .fill
@@ -24,16 +22,13 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         fatalError("init(coder:) is not supported")
         // super.init(coder: aDecoder)
     }
-        
+    */
+     
     var textureAtlas:SKTextureAtlas = SKTextureAtlas(named: "ChapterOne")
     var gameOverLabel: SKLabelNode!
     var scoreLabel: SKLabelNode!
     var countdownLabel: SKLabelNode!
-    var score = 0 {
-        didSet {
-            scoreLabel.text = "Weight: \(score)"
-        }
-    }
+
     var countdown = 3 {
         didSet {
             countdownLabel.text = "\(countdown)"
@@ -49,6 +44,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     var broccoliPhysics: SKPhysicsBody!
 
     override func didMove(to view: SKView) {
+        size = UIScreen.main.bounds.size
         rockTexture = textureAtlas.textureNamed("blue-rock-obstacle")
         rockPhysics = SKPhysicsBody(texture: rockTexture, size: rockTexture.size())
         pizzaTexture = textureAtlas.textureNamed("pizza")
@@ -67,7 +63,6 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             self.startRocks()
             self.player.physicsBody?.isDynamic = true
         })
-        createScore()
         //Här sätter jag värden för gravitation så att fågeln sjunker
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
         physicsWorld.contactDelegate = self
@@ -100,7 +95,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             
             if nodeTouched.name == "restartGame" {
 
-                let scene = GameSceneChapterOne(score: $currentWeight, isLevelCompleted: $isLevelCompleted, isRetrySelected: $isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $level)
+                let scene = GameScene()
                 scene.size = CGSize(width: UIScreen.main.bounds.width,
                                      height: UIScreen.main.bounds.height)
                 scene.scaleMode = .aspectFill
@@ -369,10 +364,8 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
                 contact.bodyA.node?.removeFromParent()
             }
             
-            currentWeight = score
             isLevelCompleted.toggle()
             player.removeFromParent()
-            scoreLabel.removeFromParent()
             speed = 0
             
         }
@@ -393,17 +386,6 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             player.removeFromParent()
             speed = 0
         }
-    }
-    
-    func createScore() {
-        scoreLabel = SKLabelNode(fontNamed: "Luckiest Guy")
-        scoreLabel.fontSize = 24
-        
-        scoreLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 35)
-        scoreLabel.text = "Weight: 0"
-        scoreLabel.fontColor = UIColor.white
-        
-        addChild(scoreLabel)
     }
     
     func createCountdown() {
@@ -495,3 +477,4 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     }
     
 }
+
