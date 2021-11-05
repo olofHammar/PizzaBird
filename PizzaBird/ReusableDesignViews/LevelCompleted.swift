@@ -38,6 +38,7 @@ struct LevelCompleted: View {
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                                 shouldTransition.toggle()
+                                                playSound(sound: "xylophone-bonus", type: "mp3", repeatNr: 0)
                                     }
                                 }
                         }
@@ -57,6 +58,7 @@ struct LevelCompleted: View {
                                     if (stars == 2 || stars == 3) {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                                                 twoStars.toggle()
+                                                playSound(sound: "xylophone-bonus", type: "mp3", repeatNr: 0)
                                         }
                                     }
                                 }
@@ -77,6 +79,7 @@ struct LevelCompleted: View {
                                     if (stars == 3) {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
                                                     threeStars.toggle()
+                                                    playSound(sound: "xylophone-bonus", type: "mp3", repeatNr: 0)
                                         }
                                     }
                                 }

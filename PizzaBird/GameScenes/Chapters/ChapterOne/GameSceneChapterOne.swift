@@ -1,6 +1,7 @@
 import Foundation
 import SpriteKit
 import SwiftUI
+import AVFoundation
 
 class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     
@@ -26,6 +27,8 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     }
         
     var textureAtlas:SKTextureAtlas = SKTextureAtlas(named: "ChapterOne")
+    
+    //Labels
     var gameOverLabel: SKLabelNode!
     var scoreLabel: SKLabelNode!
     var countdownLabel: SKLabelNode!
@@ -39,6 +42,8 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             countdownLabel.text = "\(countdown)"
         }
     }
+    
+    //Items
     var player = Player()
     var gravity = 25
     var rockTexture: SKTexture!
@@ -47,6 +52,11 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     var pizzaPhysics: SKPhysicsBody!
     var broccoliTexture: SKTexture!
     var broccoliPhysics: SKPhysicsBody!
+    
+    //Sound
+    let pizzaSound = SKAction.playSoundFileNamed("pizza-pickup", waitForCompletion: false)
+
+
 
     override func didMove(to view: SKView) {
         rockTexture = textureAtlas.textureNamed("blue-rock-obstacle")
@@ -333,6 +343,8 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             
             score += 15
             
+            playSound(sound: "pizza-pickup", type: "mp3", repeatNr: 0)
+                        
             return
         }
         
@@ -354,6 +366,8 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             gravity = newGravity
             
             score -= 15
+            
+            playSound(sound: "broccoli-pickup", type: "mp3", repeatNr: 0)
             
             return
         }
