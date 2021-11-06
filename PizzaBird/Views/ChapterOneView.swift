@@ -5,7 +5,6 @@ struct ChapterOneView: View {
     @EnvironmentObject var game: Game
     //@Binding var isGameViewShowing : Bool
     @Binding var isPreviewShowing: Bool
-
     
     var body: some View {
         ZStack {

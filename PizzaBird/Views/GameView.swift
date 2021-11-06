@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SpriteKit
+import AVFoundation
 
 struct GameView: View {
     
@@ -89,8 +90,10 @@ struct GameView: View {
     }
 }
 
+/*
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView(isGameViewShowing: .constant(true)).environmentObject(Game())
     }
 }
+ */

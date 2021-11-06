@@ -38,7 +38,7 @@ struct LevelCompleted: View {
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                                 shouldTransition.toggle()
-                                                playSound(sound: "xylophone-bonus", type: "mp3", repeatNr: 0)
+                                        playSound(sound: "xylophone-bonus", type: "wav", repeatNr: 0, volume: 0.8)
                                     }
                                 }
                         }
@@ -58,7 +58,7 @@ struct LevelCompleted: View {
                                     if (stars == 2 || stars == 3) {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                                                 twoStars.toggle()
-                                                playSound(sound: "xylophone-bonus", type: "mp3", repeatNr: 0)
+                                            playSound(sound: "xylophone-bonus", type: "wav", repeatNr: 0, volume: 0.8)
                                         }
                                     }
                                 }
@@ -79,7 +79,7 @@ struct LevelCompleted: View {
                                     if (stars == 3) {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
                                                     threeStars.toggle()
-                                                    playSound(sound: "xylophone-bonus", type: "mp3", repeatNr: 0)
+                                            playSound(sound: "xylophone-bonus", type: "wav", repeatNr: 0, volume: 0.8)
                                         }
                                     }
                                 }
@@ -113,6 +113,7 @@ struct LevelCompleted: View {
                     Button(action: {
                         isGameViewShowing.toggle()
                         game.save()
+                        playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
                     }) {
                         Image("btn-home")
                             .padding(.trailing, 4)
@@ -122,6 +123,7 @@ struct LevelCompleted: View {
                         game.gamePlay.levelNr += 1
                         game.gamePlay.isSelectedLevelCompleted = false
                         game.save()
+                        playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
                     }) {
                         Image("btn-next")
                             .padding(.leading, 4)
