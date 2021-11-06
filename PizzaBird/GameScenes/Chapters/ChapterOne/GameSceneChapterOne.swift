@@ -115,8 +115,11 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
                                      height: UIScreen.main.bounds.height)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: transition)
+                playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
+                
             } else if (nodeTouched.name == "closeGame") {
                 isGameViewShowing = false
+                playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
             }
         }
     }
@@ -343,7 +346,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             
             score += 15
             
-            playSound(sound: "pizza-pickup", type: "mp3", repeatNr: 0)
+            playSound(sound: "pizza-pickup", type: "mp3", repeatNr: 0, volume: 0.6)
                         
             return
         }
@@ -367,7 +370,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             
             score -= 15
             
-            playSound(sound: "broccoli-pickup", type: "mp3", repeatNr: 0)
+            playSound(sound: "broccoli-pickup", type: "mp3", repeatNr: 0, volume: 0.9)
             
             return
         }
@@ -388,6 +391,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             player.removeFromParent()
             scoreLabel.removeFromParent()
             speed = 0
+            playSound(sound: "level-completed", type: "wav", repeatNr: 0, volume: 0.6)
             
         }
         
@@ -402,6 +406,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
                 gameOver()
                 restartLevel()
                 closeLevel()
+                playSound(sound: "explosion", type: "wav", repeatNr: 0, volume: 0.4)
             }
             
             player.removeFromParent()

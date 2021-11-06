@@ -34,6 +34,7 @@ struct LevelPreview: View {
                     withAnimation {
                         isPreviewShowing.toggle()
                     }
+                    playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
                 }
             
             VStack {
@@ -128,6 +129,7 @@ struct LevelPreview: View {
                         }
                         
                         isPreviewShowing.toggle()
+                        playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
                     }
                     
             }

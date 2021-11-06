@@ -27,7 +27,7 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                ChapterOneView(isPreviewShowing: $isPreviewShowing)
+                ChapterTwoView(isPreviewShowing: $isPreviewShowing)
                 
                 Spacer()
             }
@@ -35,9 +35,6 @@ struct ContentView: View {
             if (isPreviewShowing) {
                 LevelPreview(isGameViewShowing: $isGameViewShowing, isPreviewShowing: $isPreviewShowing)
                     .transition(.opacity)
-                    .onAppear {
-                        backgroundMusic.volume = 0.4
-                    }
             }
             
             if (isGameViewShowing) {
