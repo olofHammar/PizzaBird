@@ -12,7 +12,7 @@ struct Levels: Codable {
         Level(levelNr: 2, levelUnlocked: false, levelCompleted: false, score: 0, levelStars: 0,
               threeStars: 90, twoStars: 60, oneStar: 30),
         Level(levelNr: 3, levelUnlocked: false, levelCompleted: false, score: 0, levelStars: 0,
-              threeStars: 60, twoStars: 45, oneStar: 30),
+              threeStars: 90, twoStars: 60, oneStar: 30),
         Level(levelNr: 4, levelUnlocked: false, levelCompleted: false, score: 0, levelStars: 0,
               threeStars: 60, twoStars: 45, oneStar: 30),
         Level(levelNr: 5, levelUnlocked: false, levelCompleted: false, score: 0, levelStars: 0,

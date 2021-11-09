@@ -240,7 +240,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     
     //I denna funktion skapar jag mållinjen
     func createFlag() {
-        let flagTexture = SKTexture(imageNamed: "finish_sign")
+        let flagTexture = SKTexture(imageNamed: "finish_chapter_one")
         let flag = SKSpriteNode(texture: flagTexture)
         
         flag.zPosition = -20
@@ -270,7 +270,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     func startRocks() {
         
         let createLowRocksWithPizza = SKAction.run { [unowned self] in
-            self.createRocks(rockDistance: 70, yPosition: 50, withPizza: true, withBroccoli: false)
+            self.createRocks(rockDistance: 30, yPosition: 80, withPizza: true, withBroccoli: false)
         }
         let createMediumRocks = SKAction.run { [unowned self] in
             self.createRocks(rockDistance: 70, yPosition: 150, withPizza: false, withBroccoli: false)
@@ -279,9 +279,19 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         let createHighRocksWithPizza = SKAction.run { [unowned self] in
             self.createRocks(rockDistance: 70, yPosition: 250, withPizza: true, withBroccoli: false)
         }
-        let createTightLowRocks = SKAction.run { [unowned self] in
-            self.createRocks(rockDistance: 50, yPosition: 50, withPizza: false, withBroccoli: false)
+        
+        let createHighRocks = SKAction.run { [unowned self] in
+            self.createRocks(rockDistance: 70, yPosition: 250, withPizza: false, withBroccoli: false)
         }
+        
+        let createTightLowRocks = SKAction.run { [unowned self] in
+            self.createRocks(rockDistance: 30, yPosition: 80, withPizza: false, withBroccoli: false)
+        }
+        
+        let createTightHighRocks = SKAction.run { [unowned self] in
+            self.createRocks(rockDistance: 15, yPosition: 200, withPizza: false, withBroccoli: false)
+        }
+        
         let createHighRocksWithBroccoli = SKAction.run { [unowned self] in
             self.createRocks(rockDistance: 70, yPosition: 250, withPizza: false, withBroccoli: true)
         }
@@ -301,10 +311,16 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
                 self.createFlag()
             })
         } else if level == 2 {
-            let runLevelThree = SKAction.sequence([createMediumRocks, wait, createHighRocksWithPizza, wait, createTightLowRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createTightLowRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait,
-            createTightLowRocks, wait])
+            let runLevelThree = SKAction.sequence([createMediumRocks, wait, createHighRocksWithPizza, wait, createTightLowRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createTightLowRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait, createHighRocksWithPizza, wait, createHighRocks, wait])
             
             run(runLevelThree, completion: {
+                self.createFlag()
+            })
+        } else if level == 3 {
+            let runLevelFour = SKAction.sequence([createHighRocksWithPizza, wait, createLowRocksWithPizza, wait,
+                createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightLowRocks, wait, createTightHighRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createTightLowRocks, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait])
+            
+            run(runLevelFour, completion: {
                 self.createFlag()
             })
         }
@@ -418,7 +434,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         scoreLabel = SKLabelNode(fontNamed: "Luckiest Guy")
         scoreLabel.fontSize = 24
         
-        scoreLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 35)
+        scoreLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 55)
         scoreLabel.text = "Weight: 0"
         scoreLabel.fontColor = UIColor.white
         
