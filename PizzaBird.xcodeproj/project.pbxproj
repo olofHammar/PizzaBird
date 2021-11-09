@@ -11,6 +11,7 @@
 		E40B2F4A26CE836F00E0B758 /* LuckiestGuy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E40B2F4926CE836F00E0B758 /* LuckiestGuy.ttf */; };
 		E416FBF626C3F7D700AE78D5 /* GamePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416FBF526C3F7D700AE78D5 /* GamePlay.swift */; };
 		E4227BB826CB304B0047DFBF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4227BB726CB304B0047DFBF /* Player.swift */; };
+		E42343B0273AC059004879DE /* ChapterCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42343AF273AC059004879DE /* ChapterCompleted.swift */; };
 		E4293C3326C68889003442C6 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4293C3226C68889003442C6 /* BorderView.swift */; };
 		E4293C3D26C68F52003442C6 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4293C3C26C68F52003442C6 /* Extentions.swift */; };
 		E43598A2273588C40015A144 /* xylophone-bonus.wav in Resources */ = {isa = PBXBuildFile; fileRef = E43598A1273588C40015A144 /* xylophone-bonus.wav */; };
@@ -69,6 +70,7 @@
 		E40B2F4926CE836F00E0B758 /* LuckiestGuy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LuckiestGuy.ttf; sourceTree = "<group>"; };
 		E416FBF526C3F7D700AE78D5 /* GamePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlay.swift; sourceTree = "<group>"; };
 		E4227BB726CB304B0047DFBF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		E42343AF273AC059004879DE /* ChapterCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCompleted.swift; sourceTree = "<group>"; };
 		E4293C3226C68889003442C6 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 		E4293C3C26C68F52003442C6 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		E43598A1273588C40015A144 /* xylophone-bonus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "xylophone-bonus.wav"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				E4C2F7B727314E6B00821DC4 /* LevelCompleted.swift */,
 				E4C2F7BF27314E8F00821DC4 /* GameOptionsView.swift */,
 				E4A1F9E927353B4400B291F7 /* LevelPreview.swift */,
+				E42343AF273AC059004879DE /* ChapterCompleted.swift */,
 			);
 			path = ReusableDesignViews;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				E4804EE9273696F500A29565 /* ChapterTwoView.swift in Sources */,
 				E4FC7827273327AC00962819 /* GameScene.swift in Sources */,
 				E4E5423226C52D0700B2FFA5 /* GameSceneChapterOne.swift in Sources */,
+				E42343B0273AC059004879DE /* ChapterCompleted.swift in Sources */,
 				E47DEDDF26C1829A00B18057 /* TopBorder.swift in Sources */,
 				E416FBF626C3F7D700AE78D5 /* GamePlay.swift in Sources */,
 				E46C6B7E2731558F00A99115 /* GameView.swift in Sources */,

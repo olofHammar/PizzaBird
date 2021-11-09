@@ -25,8 +25,8 @@ struct GameView: View {
         
         print(game.gamePlay.levelNr)
         
-            return scene
-        }
+        return scene
+    }
     
     var body: some View {
         ZStack {
@@ -34,33 +34,44 @@ struct GameView: View {
             
             if (!game.gamePlay.isSelectedLevelCompleted) {
                 SpriteView(scene: scene, options: [.allowsTransparency])
-                
             }
-
+            
             if (game.gamePlay.isSelectedLevelCompleted) {
                 
-                LevelCompleted(isGameViewShowing: $isGameViewShowing,
-                               isNextLevelSelected: $isNextLevelSelected,
-                               stars: $currentLevelStars)
+                if (game.gamePlay.levelNr == 5) {
+                    ChapterCompleted(isGameViewShowing: $isGameViewShowing,
+                                     isNextLevelSelected: $isNextLevelSelected,
+                                     stars: $currentLevelStars)
                         .onAppear{
                             setLevelCompleted()
                         }
                         .onDisappear{
                             game.gamePlay.isSelectedLevelCompleted = false
                         }
+                } else {
+                    LevelCompleted(isGameViewShowing: $isGameViewShowing,
+                                   isNextLevelSelected: $isNextLevelSelected,
+                                   stars: $currentLevelStars)
+                        .onAppear{
+                            setLevelCompleted()
+                        }
+                        .onDisappear{
+                            game.gamePlay.isSelectedLevelCompleted = false
+                        }
+                }
             }
         }
         .ignoresSafeArea(.all)
     }
     
     private func setLevelCompleted() {
-
+        
         if (game.gamePlay.currentLevelWeight > game.gamePlay.levels.levels[game.gamePlay.levelNr].score) {
             let weight = game.gamePlay.currentLevelWeight - game.gamePlay.levels.levels[game.gamePlay.levelNr].score
             
             game.gamePlay.totalWeight = game.gamePlay.totalWeight + weight
             game.gamePlay.levels.levels[game.gamePlay.levelNr].score = weight
-
+            
         }
         
         if (game.gamePlay.currentLevelWeight == game.gamePlay.levels.levels[game.gamePlay.levelNr].threeStars) {
@@ -72,28 +83,28 @@ struct GameView: View {
             
         } else if (game.gamePlay.currentLevelWeight > game.gamePlay.levels.levels[game.gamePlay.levelNr].oneStar) {
             currentLevelStars = 2
-
+            
             if (game.gamePlay.levels.levels[game.gamePlay.levelNr].levelStars < currentLevelStars) {
                 game.gamePlay.levels.levels[game.gamePlay.levelNr].levelStars = 2
             }
         } else {
             currentLevelStars = 1
-
+            
             if(game.gamePlay.levels.levels[game.gamePlay.levelNr].levelStars > currentLevelStars) {
                 print("Not setting new stars")
             } else {
                 game.gamePlay.levels.levels[game.gamePlay.levelNr].levelStars = 1
             }
         }
-
+        
         game.gamePlay.levels.levels[game.gamePlay.levelNr+1].levelUnlocked = true
     }
 }
 
 /*
-struct GameView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameView(isGameViewShowing: .constant(true)).environmentObject(Game())
-    }
-}
+ struct GameView_Previews: PreviewProvider {
+ static var previews: some View {
+ GameView(isGameViewShowing: .constant(true)).environmentObject(Game())
+ }
+ }
  */

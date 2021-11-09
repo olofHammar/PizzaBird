@@ -146,7 +146,6 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             run(wait, completion: {
                 background.run(moveForever)
             })
-            
         }
     }
     
@@ -270,7 +269,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     func startRocks() {
         
         let createLowRocksWithPizza = SKAction.run { [unowned self] in
-            self.createRocks(rockDistance: 30, yPosition: 80, withPizza: true, withBroccoli: false)
+            self.createRocks(rockDistance: 70, yPosition: 100, withPizza: true, withBroccoli: false)
         }
         let createMediumRocks = SKAction.run { [unowned self] in
             self.createRocks(rockDistance: 70, yPosition: 150, withPizza: false, withBroccoli: false)
@@ -285,7 +284,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         }
         
         let createTightLowRocks = SKAction.run { [unowned self] in
-            self.createRocks(rockDistance: 30, yPosition: 80, withPizza: false, withBroccoli: false)
+            self.createRocks(rockDistance: 70, yPosition: 100, withPizza: false, withBroccoli: false)
         }
         
         let createTightHighRocks = SKAction.run { [unowned self] in
@@ -321,6 +320,18 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
                 createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightLowRocks, wait, createTightHighRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createTightLowRocks, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait])
             
             run(runLevelFour, completion: {
+                self.createFlag()
+            })
+        } else if level == 4 {
+            let runLevelFive = SKAction.sequence([createLowRocksWithPizza, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createHighRocksWithBroccoli, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait, createMediumRocks, wait, createLowRocksWithPizza, wait, createMediumRocks, wait, createTightHighRocks, wait])
+            
+            run(runLevelFive, completion: {
+                self.createFlag()
+            })
+        } else if level == 5 {
+            let runLevelSix = SKAction.sequence([createTightLowRocks, wait, createTightHighRocks, wait, createHighRocksWithBroccoli, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait, createMediumRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createLowRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightHighRocks, wait, createMediumRocks, wait, createTightHighRocks, wait, createLowRocksWithPizza, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createMediumRocks, wait, createTightHighRocks, wait, createTightHighRocks, wait, createTightLowRocks, wait, createTightHighRocks, wait])
+            
+            run(runLevelSix, completion: {
                 self.createFlag()
             })
         }
