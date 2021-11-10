@@ -19,14 +19,14 @@ struct GameView: View {
     
     var scene: SKScene {
         if (game.gamePlay.levelNr < 6) {
-            let scene = GameSceneChapterOne(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isRetrySelected: $game.gamePlay.isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr)
+            let scene = GameSceneChapterOne(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isRetrySelected: $game.gamePlay.isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr, lives: $game.gamePlay.hearts)
             scene.size = CGSize(width: UIScreen.main.bounds.width,
                                 height: UIScreen.main.bounds.height)
             scene.scaleMode = .fill
             
             return scene
         } else {
-            let scene = GameSceneChapterTwo(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isRetrySelected: $game.gamePlay.isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr)
+            let scene = GameSceneChapterTwo(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isRetrySelected: $game.gamePlay.isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr, lives: $game.gamePlay.hearts)
             scene.size = CGSize(width: UIScreen.main.bounds.width,
                                 height: UIScreen.main.bounds.height)
             scene.scaleMode = .fill
@@ -37,10 +37,10 @@ struct GameView: View {
     
     var body: some View {
         ZStack {
-            if (game.gamePlay.levelNr > 4) {
-                SpaceView()
-            } else {
+            if (game.gamePlay.levelNr < 4) {
                 BackgroundView()
+            } else {
+                SpaceView()
             }
             
             if (!game.gamePlay.isSelectedLevelCompleted) {

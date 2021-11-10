@@ -10,14 +10,16 @@ class GameSceneChapterTwo: SKScene, SKPhysicsContactDelegate {
     @Binding var isRetrySelected: Bool
     @Binding var isGameViewShowing: Bool
     @Binding var level: Int
+    @Binding var lives: Int
     
     init(score: Binding<Int>, isLevelCompleted: Binding<Bool>, isRetrySelected: Binding<Bool>,
-         isGameViewshowing: Binding<Bool>, level: Binding<Int>) {
+         isGameViewshowing: Binding<Bool>, level: Binding<Int>, lives: Binding<Int>) {
         _currentWeight = score
         _isLevelCompleted = isLevelCompleted
         _isRetrySelected = isRetrySelected
         _isGameViewShowing = isGameViewshowing
         _level = level
+        _lives = lives
         super.init(size: CGSize(width: 300, height: 400))
         self.scaleMode = .fill
     }
@@ -57,7 +59,7 @@ class GameSceneChapterTwo: SKScene, SKPhysicsContactDelegate {
     var backgroundTwo: SKSpriteNode!
     var cloudOne: SKSpriteNode!
     var cloudTwo: SKSpriteNode!
-
+    
     
     //Sound
     let pizzaSound = SKAction.playSoundFileNamed("pizza-pickup", waitForCompletion: false)
@@ -116,20 +118,22 @@ class GameSceneChapterTwo: SKScene, SKPhysicsContactDelegate {
         for touch in (touches ) {
             let location = touch.location(in: self)
             let nodeTouched = atPoint(location)
-            let transition = SKTransition.flipVertical(withDuration: 0.2)
+            let transition = SKTransition.fade(withDuration: 0.4)
             
             if nodeTouched.name == "restartGame" {
                 
-                let scene = GameSceneChapterTwo(score: $currentWeight, isLevelCompleted: $isLevelCompleted, isRetrySelected: $isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $level)
+                let scene = GameSceneChapterTwo(score: $currentWeight, isLevelCompleted: $isLevelCompleted, isRetrySelected: $isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $level, lives: $lives)
                 scene.size = CGSize(width: UIScreen.main.bounds.width,
                                     height: UIScreen.main.bounds.height)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: transition)
                 playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
+                lives -= 1
                 
             } else if (nodeTouched.name == "closeGame") {
                 isGameViewShowing = false
                 playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
+                lives -= 1
             }
         }
     }
@@ -175,28 +179,28 @@ class GameSceneChapterTwo: SKScene, SKPhysicsContactDelegate {
         
         let wait = SKAction.wait(forDuration: 3)
         run(wait,completion: {
-                if self.speed != 0 {
-                    self.backgroundOne.position.x -= 1.5
-                    self.backgroundTwo.position.x -= 1.5
-                    self.cloudOne.position.x -= 0.8
-                    self.cloudTwo.position.x -= 0.8
-                }
-                
-                if (self.backgroundOne.position.x < -self.backgroundOne.size.width) {
-                    self.backgroundOne.position = CGPoint(x: self.backgroundTwo.position.x + self.backgroundTwo.size.width, y: -5)
-                }
+            if self.speed != 0 {
+                self.backgroundOne.position.x -= 1.5
+                self.backgroundTwo.position.x -= 1.5
+                self.cloudOne.position.x -= 0.8
+                self.cloudTwo.position.x -= 0.8
+            }
             
-                if (self.backgroundTwo.position.x < -self.backgroundTwo.size.width) {
-                    self.backgroundTwo.position = CGPoint(x: self.backgroundOne.position.x + self.backgroundTwo.size.width, y: -5)
-                }
+            if (self.backgroundOne.position.x < -self.backgroundOne.size.width) {
+                self.backgroundOne.position = CGPoint(x: self.backgroundTwo.position.x + self.backgroundTwo.size.width, y: -5)
+            }
             
-                if (self.cloudOne.position.x < -self.cloudOne.size.width) {
-                    self.cloudOne.position = CGPoint(x: self.cloudTwo.position.x + self.cloudTwo.size.width, y: self.frame.height)
-                }
+            if (self.backgroundTwo.position.x < -self.backgroundTwo.size.width) {
+                self.backgroundTwo.position = CGPoint(x: self.backgroundOne.position.x + self.backgroundTwo.size.width, y: -5)
+            }
             
-                if (self.cloudTwo.position.x < -self.cloudTwo.size.width) {
-                    self.cloudTwo.position = CGPoint(x: self.cloudOne.position.x + self.cloudTwo.size.width, y: self.frame.height)
-                }
+            if (self.cloudOne.position.x < -self.cloudOne.size.width) {
+                self.cloudOne.position = CGPoint(x: self.cloudTwo.position.x + self.cloudTwo.size.width, y: self.frame.height)
+            }
+            
+            if (self.cloudTwo.position.x < -self.cloudTwo.size.width) {
+                self.cloudTwo.position = CGPoint(x: self.cloudOne.position.x + self.cloudTwo.size.width, y: self.frame.height)
+            }
         })
     }
     
@@ -554,6 +558,8 @@ class GameSceneChapterTwo: SKScene, SKPhysicsContactDelegate {
     }
     
     func restartLevel() {
+        if lives == 0 { return }
+
         let restartButton = SKSpriteNode()
         
         restartButton.texture = SKTexture(imageNamed: "btn-restart")

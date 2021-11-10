@@ -24,10 +24,12 @@ struct ContentView: View {
                 Spacer()
                 
                 ChapterOneView(isPreviewShowing: $isPreviewShowing)
+                    .disabled(game.gamePlay.hearts == 0 ? true : false)
                 
                 Spacer()
                 
                 ChapterTwoView(isPreviewShowing: $isPreviewShowing)
+                    .disabled(game.gamePlay.hearts == 0 ? true : false)
                 
                 Spacer()
             }
@@ -47,7 +49,6 @@ struct ContentView: View {
                     .onDisappear {
                         backgroundMusic.volume = 0.4
                     }
-                
             }
         }
         .ignoresSafeArea(.all)
