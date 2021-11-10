@@ -125,18 +125,22 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     }
     
     //I denna funktion skapar jag bakgrunden
+
     func createBackground() {
-        let backgroundTexture = textureAtlas.textureNamed("background-mountain")
+        let backgroundTexture = textureAtlas.textureNamed("mountain-background-edge")
 
         for i in 0 ... 1 {
             let background = SKSpriteNode(texture: backgroundTexture)
 
+            background.name = "background"
             background.zPosition = -30
             background.anchorPoint = CGPoint.zero
-            //background.size = CGSize(width: frame.width+50, height: frame.height/3)
+            //background.size = CGSize(width: frame.width-10, height: frame.height/3)
             background.position = CGPoint(x: (backgroundTexture.size().width * CGFloat(i)) - CGFloat(1 * i), y: -5)
+            
             addChild(background)
 
+            /*
             let moveLeft = SKAction.moveBy(x: -backgroundTexture.size().width, y: 0, duration: 20)
             let moveReset = SKAction.moveBy(x: backgroundTexture.size().width, y: 0, duration: 0)
             let moveLoop = SKAction.sequence([moveLeft, moveReset])
@@ -146,7 +150,26 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             run(wait, completion: {
                 background.run(moveForever)
             })
+            */
         }
+    }
+    
+    func moveBackground() {
+        
+        let wait = SKAction.wait(forDuration: 3)
+        run(wait,completion: {
+            self.enumerateChildNodes(withName: "background", using: ({
+                   (node, error) in
+                   
+                if self.speed != 0 {
+                    node.position.x -= 1.5
+                }
+
+                if node.position.x < -(self.scene?.size.width)! * 1.5 {
+                    node.position.x += (self.scene?.size.width)! * 2.5
+                   }
+                }))
+        })
     }
     
     //I denna funktion skapar jag marken
@@ -340,6 +363,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     //I denna funktion uppdaterar jag fågelns rotation
     override func update(_ currentTime: TimeInterval) {
         //guard player != nil else { return }
+        moveBackground()
         
         let value = player.physicsBody!.velocity.dy * 0.001
         let rotate = SKAction.rotate(toAngle: value, duration: 0.1)
