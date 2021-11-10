@@ -17,7 +17,7 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-          SkyView()
+          BackgroundView()
             VStack {
                 TopBorder(hearts: $game.gamePlay.hearts, totalWeight: $game.gamePlay.totalWeight)
                 
@@ -42,6 +42,7 @@ struct ContentView: View {
                     .transition(.slide)
                     .onAppear {
                         backgroundMusic.volume = 0.8
+
                     }
                     .onDisappear {
                         backgroundMusic.volume = 0.4
@@ -53,8 +54,11 @@ struct ContentView: View {
         .onAppear{
             game.gamePlay.isSelectedLevelCompleted = false
             playBackgroundMusic()
+            //game.reset()
         }
     }
+    
+    
     
     private func playBackgroundMusic() {
         let sound = Bundle.main.path(forResource: "backgroundMusic", ofType: "mp3")

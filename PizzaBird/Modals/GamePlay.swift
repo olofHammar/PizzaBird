@@ -34,5 +34,10 @@ class Game: ObservableObject {
             UserDefaults.standard.set(encoded, forKey: Self.saveKey)
         }
     }
+    
+    func reset() {
+        UserDefaults.standard.removeObject(forKey: Self.saveKey)
+
+    }
 }
 

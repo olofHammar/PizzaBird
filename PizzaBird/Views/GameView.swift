@@ -18,19 +18,29 @@ struct GameView: View {
     @State var currentLevelStars = 0
     
     var scene: SKScene {
-        let scene = GameSceneChapterOne(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isRetrySelected: $game.gamePlay.isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr)
-        scene.size = CGSize(width: UIScreen.main.bounds.width,
-                            height: UIScreen.main.bounds.height)
-        scene.scaleMode = .fill
+            let scene = GameSceneChapterOne(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isRetrySelected: $game.gamePlay.isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr)
+            scene.size = CGSize(width: UIScreen.main.bounds.width,
+                                height: UIScreen.main.bounds.height)
+            scene.scaleMode = .fill
         
-        print(game.gamePlay.levelNr)
-        
+        /*
+        else {
+            let scene = GameSceneChapterTwo(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isRetrySelected: $game.gamePlay.isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr)
+            scene.size = CGSize(width: UIScreen.main.bounds.width,
+                                height: UIScreen.main.bounds.height)
+            scene.scaleMode = .fill
+        }
+            */
         return scene
     }
     
     var body: some View {
         ZStack {
-            BackgroundView()
+            if (game.gamePlay.levelNr > 4) {
+                SpaceView()
+            } else {
+                BackgroundView()
+            }
             
             if (!game.gamePlay.isSelectedLevelCompleted) {
                 SpriteView(scene: scene, options: [.allowsTransparency])
