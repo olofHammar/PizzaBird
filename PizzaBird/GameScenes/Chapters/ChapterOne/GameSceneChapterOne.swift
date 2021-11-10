@@ -25,7 +25,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         fatalError("init(coder:) is not supported")
         // super.init(coder: aDecoder)
     }
-        
+    
     var textureAtlas:SKTextureAtlas = SKTextureAtlas(named: "ChapterOne")
     
     //Labels
@@ -52,12 +52,14 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     var pizzaPhysics: SKPhysicsBody!
     var broccoliTexture: SKTexture!
     var broccoliPhysics: SKPhysicsBody!
-    
+    var backgroundOne: SKSpriteNode!
+    var backgroundTwo: SKSpriteNode!
+
     //Sound
     let pizzaSound = SKAction.playSoundFileNamed("pizza-pickup", waitForCompletion: false)
-
-
-
+    
+    
+    
     override func didMove(to view: SKView) {
         rockTexture = textureAtlas.textureNamed("blue-rock-obstacle")
         rockPhysics = SKPhysicsBody(texture: rockTexture, size: rockTexture.size())
@@ -109,10 +111,10 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             let transition = SKTransition.flipVertical(withDuration: 0.2)
             
             if nodeTouched.name == "restartGame" {
-
+                
                 let scene = GameSceneChapterOne(score: $currentWeight, isLevelCompleted: $isLevelCompleted, isRetrySelected: $isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $level)
                 scene.size = CGSize(width: UIScreen.main.bounds.width,
-                                     height: UIScreen.main.bounds.height)
+                                    height: UIScreen.main.bounds.height)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: transition)
                 playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
@@ -125,84 +127,104 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     }
     
     //I denna funktion skapar jag bakgrunden
-
+    
     func createBackground() {
-        let backgroundTexture = textureAtlas.textureNamed("mountain-background-edge")
-
-        for i in 0 ... 1 {
-            let background = SKSpriteNode(texture: backgroundTexture)
-
-            background.name = "background"
-            background.zPosition = -30
-            background.anchorPoint = CGPoint.zero
-            //background.size = CGSize(width: frame.width-10, height: frame.height/3)
-            background.position = CGPoint(x: (backgroundTexture.size().width * CGFloat(i)) - CGFloat(1 * i), y: -5)
-            
-            addChild(background)
-
-            /*
-            let moveLeft = SKAction.moveBy(x: -backgroundTexture.size().width, y: 0, duration: 20)
-            let moveReset = SKAction.moveBy(x: backgroundTexture.size().width, y: 0, duration: 0)
-            let moveLoop = SKAction.sequence([moveLeft, moveReset])
-            let moveForever = SKAction.repeatForever(moveLoop)
-
-            let wait = SKAction.wait(forDuration: 3)
-            run(wait, completion: {
-                background.run(moveForever)
-            })
-            */
-        }
+        
+        let backgroundTexture = textureAtlas.textureNamed("mountain-layers")
+        
+        backgroundOne = SKSpriteNode(texture: backgroundTexture)
+        backgroundOne.anchorPoint = CGPoint.zero
+        backgroundOne.position = CGPoint(x: 0, y: -5)
+        backgroundOne.zPosition = -30
+        
+        addChild(backgroundOne)
+        
+        backgroundTwo = SKSpriteNode(texture: backgroundTexture)
+        backgroundTwo.anchorPoint = CGPoint.zero
+        backgroundTwo.position = CGPoint(x: (self.backgroundOne.size.width * CGFloat(1)) - CGFloat(1 * 1), y: -5)
+        backgroundTwo.zPosition = -30
+        
+        addChild(backgroundTwo)
+        
+        /*
+         let backgroundTexture = textureAtlas.textureNamed("mountain-layers")
+         
+         for i in 0 ... 1 {
+         let background = SKSpriteNode(texture: backgroundTexture)
+         
+         background.name = "background"
+         background.zPosition = -30
+         background.anchorPoint = CGPoint.zero
+         //background.size = CGSize(width: (self.scene?.size.width)!, height: frame.height/3)
+         background.position = CGPoint(x: (backgroundTexture.size().width * CGFloat(i)) - CGFloat(1 * i), y: -5)
+         
+         addChild(background)
+         
+         
+         let moveLeft = SKAction.moveBy(x: -backgroundTexture.size().width, y: 0, duration: 20)
+         let moveReset = SKAction.moveBy(x: backgroundTexture.size().width, y: 0, duration: 0)
+         let moveLoop = SKAction.sequence([moveLeft, moveReset])
+         let moveForever = SKAction.repeatForever(moveLoop)
+         
+         let wait = SKAction.wait(forDuration: 3)
+         run(wait, completion: {
+         background.run(moveForever)
+         })
+        
+         }
+        */
     }
     
     func moveBackground() {
         
         let wait = SKAction.wait(forDuration: 3)
         run(wait,completion: {
-            self.enumerateChildNodes(withName: "background", using: ({
-                   (node, error) in
-                   
                 if self.speed != 0 {
-                    node.position.x -= 1.5
+                    self.backgroundOne.position.x -= 1.5
+                    self.backgroundTwo.position.x -= 1.5
                 }
-
-                if node.position.x < -(self.scene?.size.width)! * 1.5 {
-                    node.position.x += (self.scene?.size.width)! * 2.5
-                   }
-                }))
+                
+                if (self.backgroundOne.position.x < -self.backgroundOne.size.width) {
+                    self.backgroundOne.position = CGPoint(x: self.backgroundTwo.position.x + self.backgroundTwo.size.width, y: -5)
+                }
+            
+                if (self.backgroundTwo.position.x < -self.backgroundTwo.size.width) {
+                    self.backgroundTwo.position = CGPoint(x: self.backgroundOne.position.x + self.backgroundTwo.size.width, y: -5)
+                }
         })
     }
     
     //I denna funktion skapar jag marken
     func createGround() {
         let groundTexture = textureAtlas.textureNamed("ground-grass")
-
+        
         for i in 0 ... 1 {
             let ground = SKSpriteNode(texture: groundTexture)
             ground.zPosition = -10
             ground.position = CGPoint(x: (groundTexture.size().width / 2.0 + (groundTexture.size().width * CGFloat(i))), y: 10)
-
+            
             addChild(ground)
             
             let pointTopLeft = CGPoint(x: 0, y: 0)
             let pointTopRight = CGPoint(x: size.width, y: 0)
             ground.physicsBody = SKPhysicsBody(edgeFrom: pointTopLeft,
-                                             to: pointTopRight)
-
+                                               to: pointTopRight)
+            
             ground.physicsBody = SKPhysicsBody(texture: ground.texture!, size: ground.texture!.size())
             ground.physicsBody?.isDynamic = false
-
+            
             let moveLeft = SKAction.moveBy(x: -groundTexture.size().width, y: 0, duration: 10)
             let moveReset = SKAction.moveBy(x: groundTexture.size().width, y: 0, duration: 0)
             let moveLoop = SKAction.sequence([moveLeft, moveReset])
             let moveForever = SKAction.repeatForever(moveLoop)
-
+            
             let wait = SKAction.wait(forDuration: 3)
             run(wait,completion: {
                 ground.run(moveForever)
             })
         }
     }
-  
+    
     //I denna funktion skapar jag hinder och pizza
     func createRocks(rockDistance: CGFloat, yPosition: CGFloat, withPizza: Bool, withBroccoli: Bool) {
         
@@ -245,7 +267,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         bottomRock.position = CGPoint(x: xPosition, y: yPosition - rockDistance)
         pizza.position = CGPoint(x: xPosition - 50, y: yPosition + bottomRock.size.height/2)
         broccoli.position = CGPoint(x: xPosition - 50, y: yPosition + bottomRock.size.height/2)
-
+        
         let endPosition = frame.width + (topRock.frame.width * 2)
         let moveAction = SKAction.moveBy(x: -endPosition, y: 0, duration: 6.2)
         let moveSequence = SKAction.sequence([moveAction, SKAction.removeFromParent()])
@@ -317,7 +339,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         let createHighRocksWithBroccoli = SKAction.run { [unowned self] in
             self.createRocks(rockDistance: 70, yPosition: 250, withPizza: false, withBroccoli: true)
         }
-
+        
         let wait = SKAction.wait(forDuration: 5)
         
         if level == 0 {
@@ -340,7 +362,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             })
         } else if level == 3 {
             let runLevelFour = SKAction.sequence([createHighRocksWithPizza, wait, createLowRocksWithPizza, wait,
-                createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightLowRocks, wait, createTightHighRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createTightLowRocks, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait])
+                                                  createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightLowRocks, wait, createTightHighRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createTightLowRocks, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait])
             
             run(runLevelFour, completion: {
                 self.createFlag()
@@ -398,7 +420,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             score += 15
             
             playSound(sound: "pizza-pickup", type: "mp3", repeatNr: 0, volume: 0.6)
-                        
+            
             return
         }
         
@@ -533,7 +555,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         restartButton.zPosition = 20
         restartButton.xScale = 0.5
         restartButton.yScale = 0.5
-
+        
         
         addChild(restartButton)
         
@@ -555,7 +577,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         closeButton.zPosition = 20
         closeButton.xScale = 0.5
         closeButton.yScale = 0.5
-
+        
         
         addChild(closeButton)
         
