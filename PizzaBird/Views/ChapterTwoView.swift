@@ -24,29 +24,29 @@ struct ChapterTwoView: View {
                     .foregroundColor(.white)
                     .padding(.top, 8)
                 
-                if (game.gamePlay.totalWeight > 800) {
+                if (game.gamePlay.totalWeight >= 480) {
                                 
                     HStack {
                         LevelBtnView(isPreviewShowing: $isPreviewShowing,
-                                     levelNr: game.gamePlay.levels.levels[0].levelNr)
+                                     levelNr: game.gamePlay.levels.levels[6].levelNr)
                         
                         LevelBtnView(isPreviewShowing: $isPreviewShowing,
-                                    levelNr: game.gamePlay.levels.levels[1].levelNr)
+                                    levelNr: game.gamePlay.levels.levels[7].levelNr)
                         
                         LevelBtnView(isPreviewShowing: $isPreviewShowing,
-                                     levelNr: game.gamePlay.levels.levels[2].levelNr)
+                                     levelNr: game.gamePlay.levels.levels[8].levelNr)
                     }
                     .padding(.top)
                     
                     HStack {
                         LevelBtnView(isPreviewShowing: $isPreviewShowing,
-                                     levelNr: game.gamePlay.levels.levels[3].levelNr)
+                                     levelNr: game.gamePlay.levels.levels[9].levelNr)
                         
                         LevelBtnView(isPreviewShowing: $isPreviewShowing,
-                                     levelNr: game.gamePlay.levels.levels[4].levelNr)
+                                     levelNr: game.gamePlay.levels.levels[10].levelNr)
                         
                         LevelBtnView(isPreviewShowing: $isPreviewShowing,
-                                     levelNr: game.gamePlay.levels.levels[5].levelNr)
+                                     levelNr: game.gamePlay.levels.levels[11].levelNr)
                     }
                     .padding(.bottom)
                     
@@ -54,7 +54,7 @@ struct ChapterTwoView: View {
                 } else {
                     Spacer()
                     
-                    Text("Gain 800 grams \n to unlock  \n this chapter.")
+                    Text("Gain \(480 - game.gamePlay.totalWeight) grams \n to unlock  \n this chapter.")
                         .font(.custom("Luckiest Guy", size: 30, relativeTo: .body))
                         .foregroundColor(.white)
                         .shadow(color: .black, radius: 1)

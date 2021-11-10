@@ -3,7 +3,7 @@ import SpriteKit
 import SwiftUI
 import AVFoundation
 
-class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
+class GameSceneChapterTwo: SKScene, SKPhysicsContactDelegate {
     
     @Binding var currentWeight: Int
     @Binding var isLevelCompleted: Bool
@@ -26,7 +26,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         // super.init(coder: aDecoder)
     }
     
-    var textureAtlas:SKTextureAtlas = SKTextureAtlas(named: "ChapterOne")
+    var textureAtlas:SKTextureAtlas = SKTextureAtlas(named: "ChapterTwo")
     
     //Labels
     var gameOverLabel: SKLabelNode!
@@ -46,7 +46,8 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     //Items
     var player = Player()
     var gravity = 25
-    var rockTexture: SKTexture!
+    var rockTextures: [SKTexture]!
+    var rockTextureOne: SKTexture!
     var rockPhysics: SKPhysicsBody!
     var pizzaTexture: SKTexture!
     var pizzaPhysics: SKPhysicsBody!
@@ -64,11 +65,15 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
-        rockTexture = textureAtlas.textureNamed("blue-rock-obstacle")
-        rockPhysics = SKPhysicsBody(texture: rockTexture, size: rockTexture.size())
-        pizzaTexture = textureAtlas.textureNamed("pizza")
+        rockTextures = [textureAtlas.textureNamed("stone-wheel-one"),
+                        textureAtlas.textureNamed("stone-wheel-three"),
+                        textureAtlas.textureNamed("stone-wheel-three"),
+                        textureAtlas.textureNamed("stone-wheel-four")]
+        rockTextureOne = textureAtlas.textureNamed("stone-wheel-two")
+        rockPhysics = SKPhysicsBody(texture: rockTextureOne, size: rockTextureOne.size())
+        pizzaTexture = textureAtlas.textureNamed("pizza-chapter-two")
         pizzaPhysics = SKPhysicsBody(texture: pizzaTexture, size: pizzaTexture.size())
-        broccoliTexture = textureAtlas.textureNamed("broccoli")
+        broccoliTexture = textureAtlas.textureNamed("broccoli-chapter-two")
         broccoliPhysics = SKPhysicsBody(texture: broccoliTexture, size: broccoliTexture.size())
         
         self.backgroundColor = .clear
@@ -115,7 +120,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             
             if nodeTouched.name == "restartGame" {
                 
-                let scene = GameSceneChapterOne(score: $currentWeight, isLevelCompleted: $isLevelCompleted, isRetrySelected: $isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $level)
+                let scene = GameSceneChapterTwo(score: $currentWeight, isLevelCompleted: $isLevelCompleted, isRetrySelected: $isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $level)
                 scene.size = CGSize(width: UIScreen.main.bounds.width,
                                     height: UIScreen.main.bounds.height)
                 scene.scaleMode = .aspectFill
@@ -133,8 +138,8 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     
     func createBackground() {
         
-        let backgroundTexture = textureAtlas.textureNamed("background-chapter-one")
-        let cloudTexture = textureAtlas.textureNamed("clouds-chapter-one")
+        let backgroundTexture = textureAtlas.textureNamed("background-chapter-two")
+        let cloudTexture = textureAtlas.textureNamed("clouds-chapter-two")
         
         backgroundOne = SKSpriteNode(texture: backgroundTexture)
         backgroundOne.anchorPoint = CGPoint.zero
@@ -197,7 +202,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     
     //I denna funktion skapar jag marken
     func createGround() {
-        let groundTexture = textureAtlas.textureNamed("ground-chapter-one")
+        let groundTexture = textureAtlas.textureNamed("ground-chapter-two")
         
         for i in 0 ... 1 {
             let ground = SKSpriteNode(texture: groundTexture)
@@ -229,18 +234,23 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     //I denna funktion skapar jag hinder och pizza
     func createRocks(rockDistance: CGFloat, yPosition: CGFloat, withPizza: Bool, withBroccoli: Bool) {
         
-        let topRock = SKSpriteNode(texture: rockTexture)
+        let animation = SKAction.animate(with: rockTextures, timePerFrame: 0.02)
+        let runForever = SKAction.repeatForever(animation)
+        
+        let topRock = SKSpriteNode(texture: rockTextureOne)
         topRock.physicsBody = rockPhysics.copy() as? SKPhysicsBody
         topRock.physicsBody?.isDynamic = false
         topRock.zRotation = .pi
         //om vi sätter xScale till -1.0 så vänder vi upp och ner på noden.
         topRock.xScale = -1.0
         topRock.zPosition = -20
+        topRock.run(runForever)
         
-        let bottomRock = SKSpriteNode(texture: rockTexture)
+        let bottomRock = SKSpriteNode(texture: rockTextureOne)
         bottomRock.physicsBody = rockPhysics.copy() as? SKPhysicsBody
         bottomRock.physicsBody?.isDynamic = false
         bottomRock.zPosition = -20
+        bottomRock.run(runForever)
         
         let pizza = SKSpriteNode(texture: pizzaTexture)
         pizza.physicsBody = pizzaPhysics.copy() as? SKPhysicsBody
@@ -285,7 +295,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     
     //I denna funktion skapar jag mållinjen
     func createFlag() {
-        let flagTexture = SKTexture(imageNamed: "finish_chapter_one")
+        let flagTexture = SKTexture(imageNamed: "finish_chapter_two")
         let flag = SKSpriteNode(texture: flagTexture)
         
         flag.zPosition = -20
@@ -318,7 +328,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
             self.createRocks(rockDistance: 70, yPosition: 100, withPizza: true, withBroccoli: false)
         }
         let createMediumRocks = SKAction.run { [unowned self] in
-            self.createRocks(rockDistance: 70, yPosition: 150, withPizza: false, withBroccoli: false)
+            self.createRocks(rockDistance: 40, yPosition: 150, withPizza: false, withBroccoli: false)
         }
         
         let createHighRocksWithPizza = SKAction.run { [unowned self] in
@@ -330,7 +340,7 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         }
         
         let createTightLowRocks = SKAction.run { [unowned self] in
-            self.createRocks(rockDistance: 70, yPosition: 100, withPizza: false, withBroccoli: false)
+            self.createRocks(rockDistance: 40, yPosition: 100, withPizza: false, withBroccoli: false)
         }
         
         let createTightHighRocks = SKAction.run { [unowned self] in
@@ -343,38 +353,38 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         
         let wait = SKAction.wait(forDuration: 5)
         
-        if level == 0 {
-            let runLevelOne = SKAction.sequence([createLowRocksWithPizza, wait, createHighRocksWithBroccoli, wait,  createHighRocksWithPizza, wait, createMediumRocks, wait, createMediumRocks, wait, createLowRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightLowRocks, wait])
+        if level == 6 {
+            let runLevelOne = SKAction.sequence([createTightHighRocks, wait, createTightLowRocks, wait, createHighRocksWithBroccoli, wait, createLowRocksWithPizza, wait, createHighRocksWithBroccoli, wait,  createHighRocksWithPizza, wait, createMediumRocks, wait, createTightHighRocks, wait, createMediumRocks, wait, createLowRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightLowRocks, wait])
             
             run(runLevelOne, completion: {
                 self.createFlag()
             })
-        } else if level == 1 {
-            let runLevelTwo = SKAction.sequence([createHighRocksWithPizza, wait, createHighRocksWithPizza, wait, createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createLowRocksWithPizza, wait, createHighRocksWithPizza, wait, createTightLowRocks, wait])
+        } else if level == 7 {
+            let runLevelTwo = SKAction.sequence([createTightHighRocks, wait, createHighRocksWithPizza, wait, createHighRocksWithBroccoli, wait, createTightHighRocks,  wait, createHighRocksWithPizza, wait, createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightHighRocks, wait, createLowRocksWithPizza, wait, createHighRocksWithPizza, wait, createTightLowRocks, wait, createTightHighRocks, wait])
             
             run(runLevelTwo, completion: {
                 self.createFlag()
             })
-        } else if level == 2 {
-            let runLevelThree = SKAction.sequence([createMediumRocks, wait, createHighRocksWithPizza, wait, createTightLowRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createTightLowRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait, createHighRocksWithPizza, wait, createHighRocks, wait])
+        } else if level == 8 {
+            let runLevelThree = SKAction.sequence([createMediumRocks, wait, createTightHighRocks, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait, createTightLowRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createTightLowRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait, createHighRocksWithPizza, wait, createHighRocks, wait])
             
             run(runLevelThree, completion: {
                 self.createFlag()
             })
-        } else if level == 3 {
-            let runLevelFour = SKAction.sequence([createHighRocksWithPizza, wait, createLowRocksWithPizza, wait,
-                                                  createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightLowRocks, wait, createTightHighRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createTightLowRocks, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait])
+        } else if level == 9 {
+            let runLevelFour = SKAction.sequence([createHighRocksWithPizza, wait, createHighRocksWithBroccoli, wait, createTightHighRocks, wait, createLowRocksWithPizza, wait,
+                                                  createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightLowRocks, wait, createTightHighRocks, wait, createTightLowRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createTightLowRocks, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait])
             
             run(runLevelFour, completion: {
                 self.createFlag()
             })
-        } else if level == 4 {
-            let runLevelFive = SKAction.sequence([createLowRocksWithPizza, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createHighRocksWithBroccoli, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait, createMediumRocks, wait, createLowRocksWithPizza, wait, createMediumRocks, wait, createTightHighRocks, wait])
+        } else if level == 10 {
+            let runLevelFive = SKAction.sequence([createTightHighRocks, wait, createTightHighRocks, wait, createLowRocksWithPizza, wait, createHighRocksWithBroccoli, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createHighRocksWithBroccoli, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightHighRocks, wait,  createHighRocksWithPizza, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait, createMediumRocks, wait, createLowRocksWithPizza, wait, createMediumRocks, wait, createTightHighRocks, wait, createTightHighRocks, wait])
             
             run(runLevelFive, completion: {
                 self.createFlag()
             })
-        } else if level == 5 {
+        } else if level == 11 {
             let runLevelSix = SKAction.sequence([createTightLowRocks, wait, createTightHighRocks, wait, createHighRocksWithBroccoli, wait, createHighRocksWithBroccoli, wait, createHighRocksWithPizza, wait, createMediumRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createLowRocksWithPizza, wait, createLowRocksWithPizza, wait, createTightHighRocks, wait, createMediumRocks, wait, createTightHighRocks, wait, createLowRocksWithPizza, wait, createTightHighRocks, wait, createHighRocksWithPizza, wait, createTightHighRocks, wait, createMediumRocks, wait, createTightHighRocks, wait, createTightHighRocks, wait, createTightLowRocks, wait, createTightHighRocks, wait])
             
             run(runLevelSix, completion: {

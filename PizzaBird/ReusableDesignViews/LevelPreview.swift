@@ -63,7 +63,7 @@ struct LevelPreview: View {
                     Spacer()
                     
                     Text("\(game.gamePlay.levels.levels[game.gamePlay.levelNr].threeStars) Grams")
-                        .font(.custom("Luckiest Guy", size: 24, relativeTo: .body))
+                        .font(.custom("Luckiest Guy", size: 20, relativeTo: .body))
                         .foregroundColor(.white)
                         .shadow(color: .black, radius: 0.5)
                         .shadow(color: .black, radius: 0.5)
@@ -86,7 +86,7 @@ struct LevelPreview: View {
                     Spacer()
                     
                     Text("\(game.gamePlay.levels.levels[game.gamePlay.levelNr].twoStars) Grams")
-                        .font(.custom("Luckiest Guy", size: 24, relativeTo: .body))
+                        .font(.custom("Luckiest Guy", size: 20, relativeTo: .body))
                         .foregroundColor(.white)
                         .shadow(color: .black, radius: 0.5)
                         .shadow(color: .black, radius: 0.5)
@@ -106,7 +106,7 @@ struct LevelPreview: View {
                     Spacer()
                     
                     Text("\(game.gamePlay.levels.levels[game.gamePlay.levelNr].oneStar) Grams")
-                        .font(.custom("Luckiest Guy", size: 24, relativeTo: .body))
+                        .font(.custom("Luckiest Guy", size: 20, relativeTo: .body))
                         .foregroundColor(.white)
                         .shadow(color: .black, radius: 0.5)
                         .shadow(color: .black, radius: 0.5)
