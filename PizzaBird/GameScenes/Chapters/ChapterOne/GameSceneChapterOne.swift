@@ -54,7 +54,10 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     var broccoliPhysics: SKPhysicsBody!
     var backgroundOne: SKSpriteNode!
     var backgroundTwo: SKSpriteNode!
+    var cloudOne: SKSpriteNode!
+    var cloudTwo: SKSpriteNode!
 
+    
     //Sound
     let pizzaSound = SKAction.playSoundFileNamed("pizza-pickup", waitForCompletion: false)
     
@@ -130,7 +133,8 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
     
     func createBackground() {
         
-        let backgroundTexture = textureAtlas.textureNamed("mountain-layers")
+        let backgroundTexture = textureAtlas.textureNamed("background-chapter-one")
+        let cloudTexture = textureAtlas.textureNamed("clouds-chapter-one")
         
         backgroundOne = SKSpriteNode(texture: backgroundTexture)
         backgroundOne.anchorPoint = CGPoint.zero
@@ -146,33 +150,20 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
         
         addChild(backgroundTwo)
         
-        /*
-         let backgroundTexture = textureAtlas.textureNamed("mountain-layers")
-         
-         for i in 0 ... 1 {
-         let background = SKSpriteNode(texture: backgroundTexture)
-         
-         background.name = "background"
-         background.zPosition = -30
-         background.anchorPoint = CGPoint.zero
-         //background.size = CGSize(width: (self.scene?.size.width)!, height: frame.height/3)
-         background.position = CGPoint(x: (backgroundTexture.size().width * CGFloat(i)) - CGFloat(1 * i), y: -5)
-         
-         addChild(background)
-         
-         
-         let moveLeft = SKAction.moveBy(x: -backgroundTexture.size().width, y: 0, duration: 20)
-         let moveReset = SKAction.moveBy(x: backgroundTexture.size().width, y: 0, duration: 0)
-         let moveLoop = SKAction.sequence([moveLeft, moveReset])
-         let moveForever = SKAction.repeatForever(moveLoop)
-         
-         let wait = SKAction.wait(forDuration: 3)
-         run(wait, completion: {
-         background.run(moveForever)
-         })
+        cloudOne = SKSpriteNode(texture: cloudTexture)
+        cloudOne.anchorPoint = CGPoint(x: 0, y: 1)
+        cloudOne.position = CGPoint(x: 0, y: frame.height)
+        cloudOne.zPosition = -30
         
-         }
-        */
+        addChild(cloudOne)
+        
+        cloudTwo = SKSpriteNode(texture: cloudTexture)
+        cloudTwo.anchorPoint = CGPoint(x: 0, y: 1)
+        cloudTwo.position = CGPoint(x: (self.cloudOne.size.width * CGFloat(1)) - CGFloat(1 * 1), y: frame.height)
+        cloudTwo.zPosition = -30
+        
+        addChild(cloudTwo)
+        
     }
     
     func moveBackground() {
@@ -182,6 +173,8 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
                 if self.speed != 0 {
                     self.backgroundOne.position.x -= 1.5
                     self.backgroundTwo.position.x -= 1.5
+                    self.cloudOne.position.x -= 0.8
+                    self.cloudTwo.position.x -= 0.8
                 }
                 
                 if (self.backgroundOne.position.x < -self.backgroundOne.size.width) {
@@ -191,17 +184,25 @@ class GameSceneChapterOne: SKScene, SKPhysicsContactDelegate {
                 if (self.backgroundTwo.position.x < -self.backgroundTwo.size.width) {
                     self.backgroundTwo.position = CGPoint(x: self.backgroundOne.position.x + self.backgroundTwo.size.width, y: -5)
                 }
+            
+                if (self.cloudOne.position.x < -self.cloudOne.size.width) {
+                    self.cloudOne.position = CGPoint(x: self.cloudTwo.position.x + self.cloudTwo.size.width, y: self.frame.height)
+                }
+            
+                if (self.cloudTwo.position.x < -self.cloudTwo.size.width) {
+                    self.cloudTwo.position = CGPoint(x: self.cloudOne.position.x + self.cloudTwo.size.width, y: self.frame.height)
+                }
         })
     }
     
     //I denna funktion skapar jag marken
     func createGround() {
-        let groundTexture = textureAtlas.textureNamed("ground-grass")
+        let groundTexture = textureAtlas.textureNamed("ground-chapter-one")
         
         for i in 0 ... 1 {
             let ground = SKSpriteNode(texture: groundTexture)
             ground.zPosition = -10
-            ground.position = CGPoint(x: (groundTexture.size().width / 2.0 + (groundTexture.size().width * CGFloat(i))), y: 10)
+            ground.position = CGPoint(x: (groundTexture.size().width / 2.0 + (groundTexture.size().width * CGFloat(i))), y: 15)
             
             addChild(ground)
             

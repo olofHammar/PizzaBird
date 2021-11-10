@@ -18,20 +18,21 @@ struct GameView: View {
     @State var currentLevelStars = 0
     
     var scene: SKScene {
+        if (game.gamePlay.levelNr < 6) {
             let scene = GameSceneChapterOne(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isRetrySelected: $game.gamePlay.isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr)
             scene.size = CGSize(width: UIScreen.main.bounds.width,
                                 height: UIScreen.main.bounds.height)
             scene.scaleMode = .fill
-        
-        /*
-        else {
+            
+            return scene
+        } else {
             let scene = GameSceneChapterTwo(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isRetrySelected: $game.gamePlay.isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr)
             scene.size = CGSize(width: UIScreen.main.bounds.width,
                                 height: UIScreen.main.bounds.height)
             scene.scaleMode = .fill
+            
+            return scene
         }
-            */
-        return scene
     }
     
     var body: some View {

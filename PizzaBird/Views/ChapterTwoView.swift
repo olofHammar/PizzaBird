@@ -24,7 +24,7 @@ struct ChapterTwoView: View {
                     .foregroundColor(.white)
                     .padding(.top, 8)
                 
-                if (game.gamePlay.totalWeight >= 0) {
+                if (game.gamePlay.totalWeight >= 480) {
                                 
                     HStack {
                         LevelBtnView(isPreviewShowing: $isPreviewShowing,
@@ -54,7 +54,7 @@ struct ChapterTwoView: View {
                 } else {
                     Spacer()
                     
-                    Text("Gain \(800 - game.gamePlay.totalWeight) grams \n to unlock  \n this chapter.")
+                    Text("Gain \(480 - game.gamePlay.totalWeight) grams \n to unlock  \n this chapter.")
                         .font(.custom("Luckiest Guy", size: 30, relativeTo: .body))
                         .foregroundColor(.white)
                         .shadow(color: .black, radius: 1)
