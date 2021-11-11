@@ -1,16 +1,8 @@
-//
-//  ChapterTwoView.swift
-//  PizzaBird
-//
-//  Created by Olof Hammar on 2021-11-06.
-//
-
 import SwiftUI
 
 struct ChapterTwoView: View {
     
     @EnvironmentObject var game: Game
-    //@Binding var isGameViewShowing : Bool
     @Binding var isPreviewShowing: Bool
     
     var body: some View {
@@ -25,13 +17,13 @@ struct ChapterTwoView: View {
                     .padding(.top, 8)
                 
                 if (game.gamePlay.totalWeight >= 480) {
-                                
+                    
                     HStack {
                         LevelBtnView(isPreviewShowing: $isPreviewShowing,
                                      levelNr: game.gamePlay.levels.levels[6].levelNr)
                         
                         LevelBtnView(isPreviewShowing: $isPreviewShowing,
-                                    levelNr: game.gamePlay.levels.levels[7].levelNr)
+                                     levelNr: game.gamePlay.levels.levels[7].levelNr)
                         
                         LevelBtnView(isPreviewShowing: $isPreviewShowing,
                                      levelNr: game.gamePlay.levels.levels[8].levelNr)

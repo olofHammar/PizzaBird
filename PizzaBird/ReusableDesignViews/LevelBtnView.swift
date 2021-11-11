@@ -4,9 +4,8 @@ import SpriteKit
 struct LevelBtnView: View {
     
     @EnvironmentObject var game: Game
-//    @Binding var isGameViewShowing: Bool
     @Binding var isPreviewShowing: Bool
-
+    
     var levelNr: Int
     var levelImage: Image!
     
@@ -28,7 +27,7 @@ struct LevelBtnView: View {
                         playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
                         print("\(game.gamePlay.totalWeight)")
                     }
-            }
+                }
             VStack {
                 Spacer()
                 

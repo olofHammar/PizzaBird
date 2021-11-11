@@ -1,10 +1,3 @@
-//
-//  LevelCompleted.swift
-//  PizzaBird
-//
-//  Created by Olof Hammar on 2021-11-02.
-//
-
 import SwiftUI
 
 struct LevelCompleted: View {
@@ -22,8 +15,8 @@ struct LevelCompleted: View {
             Image("window-card-tall")
                 .resizable()
                 .frame(width: UIScreen.main.bounds.width/1.5,
-                    height: UIScreen.main.bounds.height/2,
-                    alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                       height: UIScreen.main.bounds.height/2,
+                       alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             VStack {
                 ZStack {
                     Image("window-title")
@@ -37,7 +30,7 @@ struct LevelCompleted: View {
                                 .frame(width: UIScreen.main.bounds.width/7, height: UIScreen.main.bounds.width/7, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                                shouldTransition.toggle()
+                                        shouldTransition.toggle()
                                         playSound(sound: "xylophone-bonus", type: "wav", repeatNr: 0, volume: 0.8)
                                     }
                                 }
@@ -57,7 +50,7 @@ struct LevelCompleted: View {
                                 .onAppear {
                                     if (stars == 2 || stars == 3) {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                                                twoStars.toggle()
+                                            twoStars.toggle()
                                             playSound(sound: "xylophone-bonus", type: "wav", repeatNr: 0, volume: 0.8)
                                         }
                                     }
@@ -78,7 +71,7 @@ struct LevelCompleted: View {
                                 .onAppear {
                                     if (stars == 3) {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-                                                    threeStars.toggle()
+                                            threeStars.toggle()
                                             playSound(sound: "xylophone-bonus", type: "wav", repeatNr: 0, volume: 0.8)
                                         }
                                     }
@@ -95,7 +88,7 @@ struct LevelCompleted: View {
                     .animation(.linear(duration: 0.2), value: shouldTransition)
                     .animation(.linear(duration: 0.2), value: twoStars)
                     .animation(.linear(duration: 0.2), value: threeStars)
-
+                    
                 }
                 
                 Text("Level \(game.gamePlay.levelNr+1) \n Completed")
@@ -118,6 +111,7 @@ struct LevelCompleted: View {
                         Image("btn-home")
                             .padding(.trailing, 4)
                     }
+                    .padding(.leading, game.gamePlay.levelNr == 5 || game.gamePlay.levelNr == 11 ? 100 : 0)
                     
                     Button(action: {
                         game.gamePlay.levelNr += 1
@@ -128,6 +122,7 @@ struct LevelCompleted: View {
                         Image("btn-next")
                             .padding(.leading, 4)
                     }
+                    .opacity(game.gamePlay.levelNr == 5 || game.gamePlay.levelNr == 11 ? 0 : 1)
                 }
                 .padding(.top, 20)
             }

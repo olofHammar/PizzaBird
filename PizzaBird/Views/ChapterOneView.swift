@@ -16,13 +16,13 @@ struct ChapterOneView: View {
                     .font(.custom("Luckiest Guy", size: 24, relativeTo: .body))
                     .foregroundColor(.white)
                     .padding(.top, 8)
-                                
+                
                 HStack {
                     LevelBtnView(isPreviewShowing: $isPreviewShowing,
                                  levelNr: game.gamePlay.levels.levels[0].levelNr)
                     
                     LevelBtnView(isPreviewShowing: $isPreviewShowing,
-                                levelNr: game.gamePlay.levels.levels[1].levelNr)
+                                 levelNr: game.gamePlay.levels.levels[1].levelNr)
                     
                     LevelBtnView(isPreviewShowing: $isPreviewShowing,
                                  levelNr: game.gamePlay.levels.levels[2].levelNr)

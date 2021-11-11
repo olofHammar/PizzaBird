@@ -4,7 +4,7 @@ import SpriteKit
 class Player: SKSpriteNode {
     
     var runForever = SKAction()
-
+    
     init() {
         let texture = SKTexture(imageNamed: "bird-frame-one")
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
@@ -23,7 +23,7 @@ class Player: SKSpriteNode {
         createAnimations()
         self.run(runForever)
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

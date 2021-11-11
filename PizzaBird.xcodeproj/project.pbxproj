@@ -11,9 +11,6 @@
 		E40B2F4A26CE836F00E0B758 /* LuckiestGuy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E40B2F4926CE836F00E0B758 /* LuckiestGuy.ttf */; };
 		E416FBF626C3F7D700AE78D5 /* GamePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E416FBF526C3F7D700AE78D5 /* GamePlay.swift */; };
 		E4227BB826CB304B0047DFBF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4227BB726CB304B0047DFBF /* Player.swift */; };
-		E42343B0273AC059004879DE /* ChapterCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42343AF273AC059004879DE /* ChapterCompleted.swift */; };
-		E4293C3326C68889003442C6 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4293C3226C68889003442C6 /* BorderView.swift */; };
-		E4293C3D26C68F52003442C6 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4293C3C26C68F52003442C6 /* Extentions.swift */; };
 		E43598A2273588C40015A144 /* xylophone-bonus.wav in Resources */ = {isa = PBXBuildFile; fileRef = E43598A1273588C40015A144 /* xylophone-bonus.wav */; };
 		E43598A7273588D30015A144 /* bonus-point.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E43598A6273588D30015A144 /* bonus-point.mp3 */; };
 		E46C6B762731557900A99115 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46C6B752731557900A99115 /* ContentView.swift */; };
@@ -38,15 +35,12 @@
 		E4A1FA0B2735752500B291F7 /* button-push.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4A1FA0A2735752500B291F7 /* button-push.mp3 */; };
 		E4A1FA102735753000B291F7 /* flapping-wings.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4A1FA0F2735753000B291F7 /* flapping-wings.mp3 */; };
 		E4A1FA152735753A00B291F7 /* pizza-pickup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4A1FA142735753900B291F7 /* pizza-pickup.mp3 */; };
+		E4A1FC1D273D5CE100B4D75B /* Hearts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FC1C273D5CE100B4D75B /* Hearts.swift */; };
 		E4C2F7B827314E6B00821DC4 /* LevelCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2F7B727314E6B00821DC4 /* LevelCompleted.swift */; };
-		E4C2F7C027314E8F00821DC4 /* GameOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2F7BF27314E8F00821DC4 /* GameOptionsView.swift */; };
 		E4D5F86026CE863A00058412 /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5F85F26CE863A00058412 /* Levels.swift */; };
-		E4D5F86D26CE8CEA00058412 /* PreviewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5F86C26CE8CEA00058412 /* PreviewScene.swift */; };
 		E4D8E4E2273BE44500D4A33C /* GameSceneChapterTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D8E4E1273BE44500D4A33C /* GameSceneChapterTwo.swift */; };
 		E4DE65B926C359A7008DFE25 /* PlayerExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4DE65B826C359A7008DFE25 /* PlayerExplosion.sks */; };
 		E4E5423226C52D0700B2FFA5 /* GameSceneChapterOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E5423126C52D0700B2FFA5 /* GameSceneChapterOne.swift */; };
-		E4E5424026C53D8900B2FFA5 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E5423F26C53D8900B2FFA5 /* GameOverView.swift */; };
-		E4FC7827273327AC00962819 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC7826273327AC00962819 /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,9 +65,6 @@
 		E40B2F4926CE836F00E0B758 /* LuckiestGuy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LuckiestGuy.ttf; sourceTree = "<group>"; };
 		E416FBF526C3F7D700AE78D5 /* GamePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlay.swift; sourceTree = "<group>"; };
 		E4227BB726CB304B0047DFBF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		E42343AF273AC059004879DE /* ChapterCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCompleted.swift; sourceTree = "<group>"; };
-		E4293C3226C68889003442C6 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
-		E4293C3C26C68F52003442C6 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		E43598A1273588C40015A144 /* xylophone-bonus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "xylophone-bonus.wav"; sourceTree = "<group>"; };
 		E43598A6273588D30015A144 /* bonus-point.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bonus-point.mp3"; sourceTree = "<group>"; };
 		E46C6B752731557900A99115 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,15 +95,12 @@
 		E4A1FA0A2735752500B291F7 /* button-push.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "button-push.mp3"; sourceTree = "<group>"; };
 		E4A1FA0F2735753000B291F7 /* flapping-wings.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "flapping-wings.mp3"; sourceTree = "<group>"; };
 		E4A1FA142735753900B291F7 /* pizza-pickup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pizza-pickup.mp3"; sourceTree = "<group>"; };
+		E4A1FC1C273D5CE100B4D75B /* Hearts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hearts.swift; sourceTree = "<group>"; };
 		E4C2F7B727314E6B00821DC4 /* LevelCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCompleted.swift; sourceTree = "<group>"; };
-		E4C2F7BF27314E8F00821DC4 /* GameOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOptionsView.swift; sourceTree = "<group>"; };
 		E4D5F85F26CE863A00058412 /* Levels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
-		E4D5F86C26CE8CEA00058412 /* PreviewScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScene.swift; sourceTree = "<group>"; };
 		E4D8E4E1273BE44500D4A33C /* GameSceneChapterTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneChapterTwo.swift; sourceTree = "<group>"; };
 		E4DE65B826C359A7008DFE25 /* PlayerExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerExplosion.sks; sourceTree = "<group>"; };
 		E4E5423126C52D0700B2FFA5 /* GameSceneChapterOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneChapterOne.swift; sourceTree = "<group>"; };
-		E4E5423F26C53D8900B2FFA5 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
-		E4FC7826273327AC00962819 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,12 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				E47DEDC726C161A100B18057 /* LevelBtnView.swift */,
-				E4E5423F26C53D8900B2FFA5 /* GameOverView.swift */,
-				E4293C3226C68889003442C6 /* BorderView.swift */,
 				E4C2F7B727314E6B00821DC4 /* LevelCompleted.swift */,
-				E4C2F7BF27314E8F00821DC4 /* GameOptionsView.swift */,
 				E4A1F9E927353B4400B291F7 /* LevelPreview.swift */,
-				E42343AF273AC059004879DE /* ChapterCompleted.swift */,
 			);
 			path = ReusableDesignViews;
 			sourceTree = "<group>";
@@ -180,10 +164,8 @@
 			children = (
 				E417A83726C671B900DC99ED /* Chapters */,
 				E4DE65B826C359A7008DFE25 /* PlayerExplosion.sks */,
-				E4D5F86C26CE8CEA00058412 /* PreviewScene.swift */,
 				E47DEDB526C14B6600B18057 /* SpaceView.swift */,
 				E484350C26C28F8100B8287B /* BackgroundView.swift */,
-				E4FC7826273327AC00962819 /* GameScene.swift */,
 			);
 			path = GameScenes;
 			sourceTree = "<group>";
@@ -192,9 +174,9 @@
 			isa = PBXGroup;
 			children = (
 				E416FBF526C3F7D700AE78D5 /* GamePlay.swift */,
-				E4293C3C26C68F52003442C6 /* Extentions.swift */,
 				E4227BB726CB304B0047DFBF /* Player.swift */,
 				E4D5F85F26CE863A00058412 /* Levels.swift */,
+				E4A1FC1C273D5CE100B4D75B /* Hearts.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -452,21 +434,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4C2F7C027314E8F00821DC4 /* GameOptionsView.swift in Sources */,
-				E4E5424026C53D8900B2FFA5 /* GameOverView.swift in Sources */,
+				E4A1FC1D273D5CE100B4D75B /* Hearts.swift in Sources */,
 				E484350D26C28F8100B8287B /* BackgroundView.swift in Sources */,
-				E4D5F86D26CE8CEA00058412 /* PreviewScene.swift in Sources */,
 				E4D8E4E2273BE44500D4A33C /* GameSceneChapterTwo.swift in Sources */,
-				E4293C3326C68889003442C6 /* BorderView.swift in Sources */,
 				E404B77F26CEF462001BB7B3 /* ChapterOneView.swift in Sources */,
 				E47DEDB626C14B6600B18057 /* SpaceView.swift in Sources */,
 				E46C6B762731557900A99115 /* ContentView.swift in Sources */,
-				E4293C3D26C68F52003442C6 /* Extentions.swift in Sources */,
 				E4C2F7B827314E6B00821DC4 /* LevelCompleted.swift in Sources */,
 				E4804EE9273696F500A29565 /* ChapterTwoView.swift in Sources */,
-				E4FC7827273327AC00962819 /* GameScene.swift in Sources */,
 				E4E5423226C52D0700B2FFA5 /* GameSceneChapterOne.swift in Sources */,
-				E42343B0273AC059004879DE /* ChapterCompleted.swift in Sources */,
 				E47DEDDF26C1829A00B18057 /* TopBorder.swift in Sources */,
 				E416FBF626C3F7D700AE78D5 /* GamePlay.swift in Sources */,
 				E46C6B7E2731558F00A99115 /* GameView.swift in Sources */,
