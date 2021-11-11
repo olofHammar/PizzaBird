@@ -1,10 +1,3 @@
-//
-//  GameView.swift
-//  PizzaBird
-//
-//  Created by Olof Hammar on 2021-11-02.
-//
-
 import SwiftUI
 import SpriteKit
 import AVFoundation
@@ -19,16 +12,19 @@ struct GameView: View {
     
     var scene: SKScene {
         if (game.gamePlay.levelNr < 6) {
-            let scene = GameSceneChapterOne(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isRetrySelected: $game.gamePlay.isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr)
+            let scene = GameSceneChapterOne(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr)
+            
             scene.size = CGSize(width: UIScreen.main.bounds.width,
                                 height: UIScreen.main.bounds.height)
             scene.scaleMode = .fill
             
             return scene
         } else {
-            let scene = GameSceneChapterTwo(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isRetrySelected: $game.gamePlay.isRetrySelected, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr)
+            let scene = GameSceneChapterTwo(score: $game.gamePlay.currentLevelWeight, isLevelCompleted: $game.gamePlay.isSelectedLevelCompleted, isGameViewshowing: $isGameViewShowing, level: $game.gamePlay.levelNr)
+            
             scene.size = CGSize(width: UIScreen.main.bounds.width,
                                 height: UIScreen.main.bounds.height)
+            
             scene.scaleMode = .fill
             
             return scene
@@ -37,10 +33,10 @@ struct GameView: View {
     
     var body: some View {
         ZStack {
-            if (game.gamePlay.levelNr > 4) {
-                SpaceView()
-            } else {
+            if (game.gamePlay.levelNr < 6) {
                 BackgroundView()
+            } else {
+                SpaceView()
             }
             
             if (!game.gamePlay.isSelectedLevelCompleted) {
@@ -49,27 +45,15 @@ struct GameView: View {
             
             if (game.gamePlay.isSelectedLevelCompleted) {
                 
-                if (game.gamePlay.levelNr == 5) {
-                    ChapterCompleted(isGameViewShowing: $isGameViewShowing,
-                                     isNextLevelSelected: $isNextLevelSelected,
-                                     stars: $currentLevelStars)
-                        .onAppear{
-                            setLevelCompleted()
-                        }
-                        .onDisappear{
-                            game.gamePlay.isSelectedLevelCompleted = false
-                        }
-                } else {
-                    LevelCompleted(isGameViewShowing: $isGameViewShowing,
-                                   isNextLevelSelected: $isNextLevelSelected,
-                                   stars: $currentLevelStars)
-                        .onAppear{
-                            setLevelCompleted()
-                        }
-                        .onDisappear{
-                            game.gamePlay.isSelectedLevelCompleted = false
-                        }
-                }
+                LevelCompleted(isGameViewShowing: $isGameViewShowing,
+                               isNextLevelSelected: $isNextLevelSelected,
+                               stars: $currentLevelStars)
+                    .onAppear{
+                        setLevelCompleted()
+                    }
+                    .onDisappear{
+                        game.gamePlay.isSelectedLevelCompleted = false
+                    }
             }
         }
         .ignoresSafeArea(.all)
@@ -85,7 +69,7 @@ struct GameView: View {
             
         }
         
-        if (game.gamePlay.currentLevelWeight == game.gamePlay.levels.levels[game.gamePlay.levelNr].threeStars) {
+        if (game.gamePlay.currentLevelWeight >= game.gamePlay.levels.levels[game.gamePlay.levelNr].threeStars) {
             currentLevelStars = 3
             
             if (game.gamePlay.levels.levels[game.gamePlay.levelNr].levelStars < currentLevelStars) {
@@ -108,7 +92,9 @@ struct GameView: View {
             }
         }
         
-        game.gamePlay.levels.levels[game.gamePlay.levelNr+1].levelUnlocked = true
+        if (game.gamePlay.levelNr != 11) {
+            game.gamePlay.levels.levels[game.gamePlay.levelNr+1].levelUnlocked = true
+        }
     }
 }
 

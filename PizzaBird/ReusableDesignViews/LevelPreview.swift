@@ -1,10 +1,3 @@
-//
-//  LevelPreview.swift
-//  PizzaBird
-//
-//  Created by Olof Hammar on 2021-11-05.
-//
-
 import SwiftUI
 
 struct LevelPreview: View {
@@ -18,12 +11,12 @@ struct LevelPreview: View {
             Image("window-card-tall")
                 .resizable()
                 .frame(width: UIScreen.main.bounds.width/1.5,
-                    height: UIScreen.main.bounds.height/2,
-                    alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                       height: UIScreen.main.bounds.height/2,
+                       alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.gray, lineWidth: 2)
-                        )
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.gray, lineWidth: 2)
+                )
             
             Image("btn-level-close")
                 .resizable()
@@ -82,7 +75,7 @@ struct LevelPreview: View {
                     Image("star-medium-on")
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width/15, height: UIScreen.main.bounds.width/15, alignment: .center)
-                   
+                    
                     Spacer()
                     
                     Text("\(game.gamePlay.levels.levels[game.gamePlay.levelNr].twoStars) Grams")
@@ -102,7 +95,7 @@ struct LevelPreview: View {
                     Image("star-medium-on")
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width/15, height: UIScreen.main.bounds.width/15, alignment: .center)
-                   
+                    
                     Spacer()
                     
                     Text("\(game.gamePlay.levels.levels[game.gamePlay.levelNr].oneStar) Grams")
@@ -131,7 +124,7 @@ struct LevelPreview: View {
                         isPreviewShowing.toggle()
                         playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
                     }
-                    
+                
             }
         }
         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)

@@ -6,35 +6,71 @@ struct WelcomeView: View {
     
     var body: some View {
         ZStack {
-            if isWelcomeViewShowing {
-                VStack {
-                    ZStack {
-                        Image("pizza_bird_title")
-                            .resizable()
-                            .frame(width: 400, height: 400)
-                            .padding(.top, UIScreen.main.bounds.height/2.4)
-                        
-                        Image("pizza_bird_logo")                        .resizable()
-                            .frame(width: 400, height: 400)
-                            .padding(.bottom, UIScreen.main.bounds.height/3)
-                        
-                        Text("TAP TO START GAME")
-                            .font(.system(size: 24, weight: .heavy, design: .rounded))
-                            .foregroundColor(.white)
-                            .padding(.top, UIScreen.main.bounds.height/1.2)
-                            .onTapGesture {
-                                withAnimation{
-                                    isWelcomeViewShowing.toggle()
-                                }
-                            }
-                    }
+            Image("window-card-tall")
+                .resizable()
+                .padding(.vertical, 70)
+                .padding(.horizontal, 20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.gray, lineWidth: 2)
+                )
+            
+            VStack {
+                
+                Image("bird_welcome")
+                
+                Text("Welcome")
+                    .font(.custom("Luckiest Guy", size: 40, relativeTo: .body))
+                    .foregroundColor(.white)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .multilineTextAlignment(.center)
+                
+                Text("Travel through levels \nand eat pizza.\ngain as much weight\nas possible. ")
+                    .font(.custom("Luckiest Guy", size: 25, relativeTo: .body))
+                    .foregroundColor(.white)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 20)
+                
+                Text("Be careful to stay\naway from broccoli!!!. ")
+                    .font(.custom("Luckiest Guy", size: 25, relativeTo: .body))
+                    .foregroundColor(.white)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .shadow(color: .black, radius: 1)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 20)
+                
+                Button(action: {
+                    isWelcomeViewShowing.toggle()
+                    playSound(sound: "button-push", type: "mp3", repeatNr: 0, volume: 0.5)
+                }) {
+                    Text("Play ")
+                        .font(.custom("Luckiest Guy", size: 70, relativeTo: .body))
+                        .foregroundColor(.white)
+                        .shadow(color: .black, radius: 1)
+                        .shadow(color: .black, radius: 1)
+                        .shadow(color: .black, radius: 1)
+                        .shadow(color: .black, radius: 1)
+                        .shadow(color: .black, radius: 1)
+                        .multilineTextAlignment(.center)
                 }
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
-                .padding(34)
-                .cornerRadius(24)
-                .transition(.move(edge: .leading))
+                .padding(.top, 50)
             }
+            
         }
+        .background(Color.black.opacity(0.4))
+        .ignoresSafeArea(.all)
     }
 }
 

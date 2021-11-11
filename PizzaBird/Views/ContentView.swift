@@ -1,35 +1,36 @@
-//
-//  ContentView.swift
-//  PizzaBird
-//
-//  Created by Olof Hammar on 2021-11-02.
-//
-
 import SwiftUI
 import AVFoundation
 
 struct ContentView: View {
     
     @EnvironmentObject var game: Game
+    @EnvironmentObject var lives: UserLives
     @State var isGameViewShowing = false
     @State var isPreviewShowing = false
+    @State var isWelcomeShowing = true
     @State var backgroundMusic: AVAudioPlayer!
-
+    
     var body: some View {
         ZStack {
-          BackgroundView()
+            BackgroundView()
             VStack {
-                TopBorder(hearts: $game.gamePlay.hearts, totalWeight: $game.gamePlay.totalWeight)
+                TopBorder(hearts: $lives.hearts.hearts, totalWeight: $game.gamePlay.totalWeight)
                 
                 Spacer()
                 
                 ChapterOneView(isPreviewShowing: $isPreviewShowing)
+                    .disabled(lives.hearts.hearts == 0 ? true : false)
                 
                 Spacer()
                 
                 ChapterTwoView(isPreviewShowing: $isPreviewShowing)
+                    .disabled(lives.hearts.hearts == 0 ? true : false)
                 
                 Spacer()
+            }
+            
+            if (isWelcomeShowing) {
+                WelcomeView(isWelcomeViewShowing: $isWelcomeShowing)
             }
             
             if (isPreviewShowing) {
@@ -42,12 +43,13 @@ struct ContentView: View {
                     .transition(.slide)
                     .onAppear {
                         backgroundMusic.volume = 0.8
-
+                        
                     }
                     .onDisappear {
                         backgroundMusic.volume = 0.4
+                        lives.hearts.hearts -= 1
+                        lives.save()
                     }
-                
             }
         }
         .ignoresSafeArea(.all)
@@ -62,7 +64,7 @@ struct ContentView: View {
     
     private func playBackgroundMusic() {
         let sound = Bundle.main.path(forResource: "backgroundMusic", ofType: "mp3")
-                    self.backgroundMusic = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+        self.backgroundMusic = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
         
         backgroundMusic.volume = 0.4
         backgroundMusic.numberOfLoops = -1
@@ -72,6 +74,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(Game())
+        ContentView().environmentObject(Game()).environmentObject(UserLives())
     }
 }

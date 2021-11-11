@@ -3,7 +3,7 @@ import SwiftUI
 
 
 struct Levels: Codable {
-
+    
     var levels: [Level] = [
         Level(levelNr: 0, levelUnlocked: true, levelCompleted: false, score: 0, levelStars: 0,
               threeStars: 60, twoStars: 45, oneStar: 30),
