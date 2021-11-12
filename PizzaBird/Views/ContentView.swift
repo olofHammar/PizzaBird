@@ -58,6 +58,9 @@ struct ContentView: View {
             playBackgroundMusic()
             //game.reset()
         }
+        .onDisappear{
+            backgroundMusic.stop()
+        }
     }
     
     
